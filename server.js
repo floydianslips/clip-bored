@@ -38,11 +38,56 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
-// Home page
+//POST or PUT listeners
+app.post("/polls/", (req, res) => {
+  let randomPollId = generateRandomString(6);
+  knex('polls')
+  .insert({maker: req.body.email})
+  res.redirect("/polls/:id/results");
+});
+
+
+app.put("/polls/:id", (req, res) => {
+
+  res.redirect("/polls/" + req.params.id + "/results")
+});
+
+
+
+// GET listeners
+
+//Renders index page on home root visit
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+//Redirects user to home on visiting /polls
+app.get("/polls/", (req, res) => {
+  res.redirect("/");
+});
+
+
+app.get("/polls/:id", (req, res) => {
+  res.render("vote");
+});
+
+
+app.get("/polls/:id/results", (req, res) => {
+  res.render("results");
+});
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+// Random String Generator For UserIDs and ShortURL Names
+function generateRandomString(num) {
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let outPut = '';
+    for (i = 0; i < num; i++) {
+    let character = possible.charAt(Math.floor(Math.random() * possible.length));
+    outPut += character;
+  }
+  return outPut;
+}
