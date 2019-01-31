@@ -1,7 +1,42 @@
-body {
-  background-color: #EEE;
+// Custom.scss
+// Option B: Include parts of Bootstrap
 
-  h1 {
-    color: #244751;
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// Optional
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/code";
+@import "../node_modules/bootstrap/scss/grid";
+
+// Custom Palette (Tangier)
+$doomago: rgba(22, 19, 48, 1);
+$spacecadet: rgba(29, 6, 104, 1);
+$tangier: rgba(252, 119, 83, 1);
+$wisp: rgba(242, 239, 234, 1);
+
+body {
+  color: $tangier;
+  background-color: $wisp;
+  font: {
+    family: 'Montserrat', sans-serif;
+    size: 1em;
+    weight: 300;
   }
+}
+
+h1, h2, h3 {
+  color: $tangier;
+  font-weight: 500;
+}
+
+input {
+  border: none;
+  background-color: inherit;
+  border-bottom: 1px solid $tangier;
+  font-weight: 300;
 }

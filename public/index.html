@@ -4,17 +4,24 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Clip Bored!</title>
+    <title>Clipbored!?</title>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Vendor/Normalize CSS -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <!-- Animate CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/poll-box.css" type="text/css"/>
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <!-- Optional JavaScript -->
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -23,14 +30,25 @@
   </head>
   <body>
 
-    <nav>
-        <h1>Hello, world!</h1>
+    <nav class="navbar-nav">
+        <a href="#" class="navbar-brand">Clipbored!?</a>
     </nav>
 
     <main>
-      <section class="description">
 
+      <section class="intro-blurb">
+        <p class="blurb"> Welcome to Clipbored!?. This is the place to make quick polls. Just enter a question and some options, then send the link to your friends. </p>
       </section>
+
+      <article class="poll-box">
+        <div class="poll-question">
+          <input type="text" class="question" placeholder="Choose your question... ">
+        </div>
+        <div class="question-options">
+          <input type="text" class="each-option" placeholder="Add your options...">
+          <input type="text" class="each-option" placeholder="Add your options...">
+        </div>
+      </article>
 
     </main>
 
