@@ -8,6 +8,7 @@ $(() => {
   //   }
   // });;
 
+<<<<<<< HEAD
 //Logic For When A User Submits A New Tweet In The Compose Tweet Box, Includes A Few Error Handlers With A Small Error Boxs That Pops Up
   // $('form').on('submit', function(event) {
   //   event.preventDefault();
@@ -48,5 +49,7 @@ $('form').on('submit', function(event) {
 
 
 
+=======
+>>>>>>> ce4a14562c6fdea48fb76faf1d69afeaa7a6cdfe
 
 });

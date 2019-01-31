@@ -39,12 +39,6 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 
 //POST or PUT listeners
-app.get("/polls/", (req, res) => {
-  let randomPollId = generateRandomString(6);
-  knex('polls').insert({id: randomPollId, maker: 'the_maker', title: 'the_title', options: 6, voter_count: 6});
-  // res.redirect("/polls/:id/results");
-  return;
-});
 
 
 app.put("/polls/:id", (req, res) => {
@@ -58,10 +52,6 @@ app.put("/polls/:id", (req, res) => {
 
 //Renders index page on home root visit
 app.get("/", (req, res) => {
-  res.render("index");
-});
-
-app.get("/testing-create-poll", (req, res) => {
   res.render("index");
 });
 
@@ -88,7 +78,6 @@ app.listen(PORT, () => {
 // Random String Generator For UserIDs and ShortURL Names
 function generateRandomString(num) {
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let outPut = '';
     for (let i = 0; i < num; i++) {
     let character = possible.charAt(Math.floor(Math.random() * possible.length));
     outPut += character;
