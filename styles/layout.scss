@@ -13,15 +13,15 @@
 @import "../node_modules/bootstrap/scss/code";
 @import "../node_modules/bootstrap/scss/grid";
 
-// Custom Palette (Tangier)
-$doomago: rgba(22, 19, 48, 1);
-$spacecadet: rgba(29, 6, 104, 1);
-$tangier: rgba(252, 119, 83, 1);
-$wisp: rgba(242, 239, 234, 1);
+// Custom Palette (Officana)
+// $steal  : rgba(11, 57, 84, 1);
+// $turq  : rgb(25, 186, 197);
+// $cherry: rgba(193, 41, 46, 1);
+$dust  : rgba(245, 241, 237, 1);
 
 body {
-  color: $tangier;
-  background-color: $wisp;
+  color: $indigo;
+  background-color: $teal;
   font: {
     family: 'Montserrat', sans-serif;
     size: 1em;
@@ -30,13 +30,16 @@ body {
 }
 
 h1, h2, h3 {
-  color: $tangier;
   font-weight: 500;
 }
 
 input {
+  padding: .5em;
+  width: 100%;
   border: none;
   background-color: inherit;
-  border-bottom: 1px solid $tangier;
+  border-bottom: 1px solid $teal;
   font-weight: 300;
 }
+
+:focus {outline:none;}

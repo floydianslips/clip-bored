@@ -1,5 +1,30 @@
 @import "layout.scss";
 
-.poll-box {
-  background-color: $tangier;
+.poll-col {
+  max-width: 600px;
+}
+
+.create {
+  color: $teal;
+  background-color: $dust;
+  .question {
+    background-color: $indigo;
+    padding: 1.5em 1em 1em ;
+    input {
+      color: $dust;
+    }
+  }
+  .question-options {
+    padding: 1em;
+    font-size: .8em;
+  }
+  footer {
+    padding: 1em;
+    display: flex;
+    justify-content: flex-end;
+    .btn {
+      color: $dust;
+      background-color: $teal;
+    }
+  }
 }

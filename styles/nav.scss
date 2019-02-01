@@ -1,6 +1,21 @@
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
 @import "layout.scss";
 
-navbar-dark {
-  color: $tangier;
-  background-color: $spacecadet;
+.navbar {
+  margin-bottom: 2em;
+  .navbar-brand {
+    color: $indigo;
+    font-weight: 500;
+    :hover {
+      color: red;
+    }
+  }
+}
+
+.navbar-custom{
+  background-color: darken($teal, 5%);
 }
