@@ -52,8 +52,8 @@ app.post("/polls/", (req, res) => {
       console.log('FOUND AN OPTION!');
       console.log('Option' + key + 'Title = ' + newPollOptions[key]['title']);
       console.log('Option' + key + 'Description = ' + newPollOptions[key]['description']);
-      knex('options').insert({id: 12, polls_id: newPollId, title: newPollOptions[key]['title'], description: newPollOptions[key]['description']}).then(function() {
-        console.log('FART');
+      knex('options').insert({id: generateRandomNumbers(4), polls_id: newPollId, title: newPollOptions[key]['title'], description: newPollOptions[key]['description']}).then(function() {
+        console.log(newPollId);
       });
     }
   });
