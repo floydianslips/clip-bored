@@ -8,7 +8,7 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
-
+const sendEmail   = require("./public/scripts/sendEmail");
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
@@ -16,7 +16,6 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
-
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -45,6 +44,8 @@ app.post("/polls/", (req, res) => {
   let newPollMaker = req.body['newPoll']['maker'];
   let newPollTitle = req.body['newPoll']['title'];
   let newPollOptions = req.body['options'];
+  let pollResults = "http://localhost:8080/polls/" + newPollId + "/results";
+  let pollUrl = "http://localhost:8080/polls/" + newPollId;
   //Inserts The Poll Into DB
   knex('polls').insert({id: newPollId, maker: newPollMaker, title: newPollTitle, voter_count: 0}).then(function() {
     //Create Maker With E-Mail And Tie The Poll To Them
@@ -56,7 +57,10 @@ app.post("/polls/", (req, res) => {
       }
     });
   //INSERT MAILGUN FUNCTION CALL HERE
-  res.redirect("/polls/" + newPollId + "/results")
+  console.log("new poll", newPollMaker);
+  sendEmail(newPollMaker, pollResults, pollUrl);
+
+  res.redirect("/polls/" + newPollId + "/results");
   return;
   });
 });
@@ -118,8 +122,8 @@ app.get("/polls/:id/results", (req, res) => {
       allResultsForPoll["option" + i]['title'] = rows[i]['title'];
       allResultsForPoll["option" + i]['points'] = rows[i]['points'];
     }
-  console.log('Final Results In An Object For The Website!', allResultsForPoll);
-  // res.render("results", allResultsForPoll);
+  // console.log('Final Results In An Object For The Website!', allResultsForPoll);
+  res.render("results", allResultsForPoll);
   })
 });
 
