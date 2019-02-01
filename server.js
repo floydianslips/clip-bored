@@ -48,7 +48,7 @@ app.post("/polls/", (req, res) => {
   //Inserts The Poll Into DB
   knex('polls').insert({id: newPollId, maker: newPollMaker, title: newPollTitle, voter_count: 0}).then(function() {
     //Create Maker With E-Mail And Tie The Poll To Them
-    knex('makers').insert({email: newPollMaker, polls_id: newPollId}).then(function() {
+    knex('makers').insert({ email: newPollMaker, polls_id: newPollId} ).then(function() {
       //Inserts Options Into DB
       for (var key in newPollOptions) {
         knex('options').insert({polls_id: newPollId, title: newPollOptions[key]['title'], description: newPollOptions[key]['description'], points: 0}).then(function() {
@@ -63,7 +63,15 @@ app.post("/polls/", (req, res) => {
 
 
 app.put("/polls/:id", (req, res) => {
-
+  let whichPoll = req.body['whichPoll'];
+  let votes = req.body['newVotes'];
+  for (var key in votes) {
+    //Adds The Points To The Correct Options
+    console.log('Finding...ID: ', votes[key]['id']);
+    knex('options').where('id', votes[key]['id']).update({ 'points': knex.raw(`points + ${votes[key]['points']}`)}).then(function() {
+      console.log('Updated A Value?');
+    })
+  }
   res.redirect("/polls/" + req.params.id + "/results")
 });
 
