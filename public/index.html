@@ -18,6 +18,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/poll-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
@@ -35,45 +36,44 @@
 
 <body>
 
-  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-custom shadow-sm">
     <a href="#" class="navbar-brand">Clipbored!?</a>
     <!-- <ul class="navbar-nav">
       <li></li>
     </ul> -->
   </nav>
 
-  <div class="container">
+  <div class="container-flex">
     <!-- <main> -->
 
-      <div class="row justify-content-around">
+      <div class="row justify-content-center">
 
-        <div class="col-sm-6 col-md-4">
-          <section class="intro-blurb">
-            <h1>Welcome to Clipbored</h1>
+        <div class="col col-sm-5 col-md-5">
+          <section class="intro-blurb ">
+            <h1 class="welcome">Welcome to <span>Clipbored!?</span></h1>
             <p class="blurb"> This is the place to make quick polls. Just enter a question and
               some options, then send the link to your friends. </p>
           </section>
         </div>
 
 
-        <div class="poll-col col-sm-6 col-md-8">
-          <!-- <div class="box shadow"> -->
-          <form id="" class="create rounded shadow">
+        <div class="col col-sm-7 col-md-7">
+          <!-- <div class="box"> -->
+          <form class="create rounded shadow">
             <div class="question rounded-top">
               <input type="text" class="question" placeholder="Choose your question... ">
             </div>
             <div class="question-options">
-              <input type="text" class="each-option" placeholder="Add your options...">
-              <input type="text" class="each-option" placeholder="Add your options...">
-              <input type="text" class="each-option" placeholder="Add your options...">
+              <input type="text" class="option" placeholder="Add an option...">
+              <input type="text" class="option" placeholder="Add another option...">
+              <input type="text" class="option" placeholder="Add more options...">
             </div>
             <footer class="rounded-bottom">
                 <button class="btn shadow-sm">Submit</button>
             </footer>
           </form>
-        <!-- </div> -->
+          <!-- </div> -->
         </div>
-
       </div>
 
     <!-- </main> -->

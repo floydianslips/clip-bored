@@ -1,22 +1,26 @@
 @import "layout.scss";
 
-.poll-col {
-  max-width: 600px;
-}
-
 .create {
-  color: $teal;
+  color: $indigo;
   background-color: $dust;
   .question {
-    background-color: $indigo;
-    padding: 1.5em 1em 1em ;
+    background-color: $teal;
+    padding: 1.5em .5em 1em ;
     input {
-      color: $dust;
+      color: $indigo;
+      font-weight: 500;
     }
   }
   .question-options {
     padding: 1em;
     font-size: .8em;
+    .option {
+      color: $indigo;
+      padding: .5em;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid $teal;
+    }
   }
   footer {
     padding: 1em;
@@ -25,6 +29,11 @@
     .btn {
       color: $dust;
       background-color: $teal;
+      // border-radius: 7px;
+      &:hover {
+        background-color: darken($teal, 10%);
+        cursor: pointer;
+      }
     }
   }
 }
