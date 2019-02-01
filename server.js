@@ -47,16 +47,16 @@ app.post("/polls/", (req, res) => {
   let newPollOptions = req.body['options'];
   //Inserts The Poll Into DB
   knex('polls').insert({id: newPollId, maker: newPollMaker, title: newPollTitle, voter_count: 0}).then(function() {
-    //Inserts Options Into DB
-    for (var key in newPollOptions) {
-      console.log('FOUND AN OPTION!');
-      console.log('Option' + key + 'Title = ' + newPollOptions[key]['title']);
-      console.log('Option' + key + 'Description = ' + newPollOptions[key]['description']);
-      knex('options').insert({id: generateRandomNumbers(4), polls_id: newPollId, title: newPollOptions[key]['title'], description: newPollOptions[key]['description']}).then(function() {
-        console.log(newPollId);
-      });
-    }
+    //Create Maker With E-Mail And Tie The Poll To Them
+    knex('makers').insert({email: newPollMaker, polls_id: newPollId}).then(function() {
+      //Inserts Options Into DB
+      for (var key in newPollOptions) {
+        knex('options').insert({polls_id: newPollId, title: newPollOptions[key]['title'], description: newPollOptions[key]['description'], points: 0}).then(function() {
+        });
+      }
+    });
   });
+  //INSERT MAILGUN FUNCTION CALL HERE
   res.redirect("/polls/" + newPollId + "/results")
   return;
 });
