@@ -26,7 +26,8 @@ app.use(morgan('dev'));
 app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -39,10 +40,24 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 
 //POST or PUT listeners
-app.get("/polls/", (req, res) => {
-  let randomPollId = generateRandomString(6);
-  knex('polls').insert({id: randomPollId, maker: 'the_maker', title: 'the_title', options: 6, voter_count: 6});
-  // res.redirect("/polls/:id/results");
+app.post("/polls/", (req, res) => {
+  let newPollId = generateRandomNumbers(6);
+  let newPollMaker = req.body['newPoll']['maker'];
+  let newPollTitle = req.body['newPoll']['title'];
+  let newPollOptions = req.body['options'];
+  //Inserts The Poll Into DB
+  knex('polls').insert({id: newPollId, maker: newPollMaker, title: newPollTitle, voter_count: 0}).then(function() {
+    //Inserts Options Into DB
+    for (var key in newPollOptions) {
+      console.log('FOUND AN OPTION!');
+      console.log('Option' + key + 'Title = ' + newPollOptions[key]['title']);
+      console.log('Option' + key + 'Description = ' + newPollOptions[key]['description']);
+      knex('options').insert({id: 12, polls_id: newPollId, title: newPollOptions[key]['title'], description: newPollOptions[key]['description']}).then(function() {
+        console.log('FART');
+      });
+    }
+  });
+  res.redirect("/polls/" + newPollId + "/results")
   return;
 });
 
@@ -82,9 +97,9 @@ app.listen(PORT, () => {
 });
 
 // Random String Generator For UserIDs and ShortURL Names
-function generateRandomString(num) {
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let outPut = '';
+function generateRandomNumbers(num) {
+  const possible = '123456789';
+  let outPut = 9;
     for (let i = 0; i < num; i++) {
     let character = possible.charAt(Math.floor(Math.random() * possible.length));
     outPut += character;
