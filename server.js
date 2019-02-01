@@ -55,10 +55,10 @@ app.post("/polls/", (req, res) => {
         });
       }
     });
-  });
   //INSERT MAILGUN FUNCTION CALL HERE
   res.redirect("/polls/" + newPollId + "/results")
   return;
+  });
 });
 
 
@@ -67,12 +67,12 @@ app.put("/polls/:id", (req, res) => {
   let votes = req.body['newVotes'];
   for (var key in votes) {
     //Adds The Points To The Correct Options
-    console.log('Finding...ID: ', votes[key]['id']);
+    // console.log('Finding...ID: ', votes[key]['id']);
     knex('options').where('id', votes[key]['id']).update({ 'points': knex.raw(`points + ${votes[key]['points']}`)}).then(function() {
-      console.log('Updated A Value?');
     })
   }
-  res.redirect("/polls/" + req.params.id + "/results")
+  //INSERT MAILGUN FUNCTION CALL HERE
+  res.redirect("/polls/" + req.params.id + "/results");
 });
 
 
@@ -89,14 +89,38 @@ app.get("/polls/", (req, res) => {
   res.redirect("/");
 });
 
-
+//Loads the vote page for the current poll
 app.get("/polls/:id", (req, res) => {
-  res.render("vote");
+  let allOptionsForPoll = {};
+  knex('options').where({'polls_id': req.params.id}).then(function(rows) {
+    for (let i=0; i < rows.length; i++) {
+      allOptionsForPoll["option" + i] = {};
+      allOptionsForPoll["option" + i]['id'] = rows[i]['id'];
+      allOptionsForPoll["option" + i]['polls_id'] = rows[i]['polls_id'];
+      allOptionsForPoll["option" + i]['description'] = rows[i]['description'];
+      allOptionsForPoll["option" + i]['title'] = rows[i]['title'];
+      allOptionsForPoll["option" + i]['points'] = rows[i]['points'];
+    }
+  // console.log('Final Results In An Object For The Website!', allOptionsForPoll);
+  res.render("vote", allOptionsForPoll);
+  })
 });
 
-
+//Loads the results page for the current poll
 app.get("/polls/:id/results", (req, res) => {
-  res.render("results");
+  let allResultsForPoll = {};
+  knex('options').where({'polls_id': req.params.id}).then(function(rows) {
+    for (let i=0; i < rows.length; i++) {
+      allResultsForPoll["option" + i] = {};
+      allResultsForPoll["option" + i]['id'] = rows[i]['id'];
+      allResultsForPoll["option" + i]['polls_id'] = rows[i]['polls_id'];
+      allResultsForPoll["option" + i]['description'] = rows[i]['description'];
+      allResultsForPoll["option" + i]['title'] = rows[i]['title'];
+      allResultsForPoll["option" + i]['points'] = rows[i]['points'];
+    }
+  console.log('Final Results In An Object For The Website!', allResultsForPoll);
+  // res.render("results", allResultsForPoll);
+  })
 });
 
 
