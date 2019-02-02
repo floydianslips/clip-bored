@@ -23,7 +23,7 @@ const pollsRoutes = require("./routes/polls");
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
-app.use(knexLogger(knex));
+
 
 app.set("view engine", "ejs");
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,99 +37,92 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/polls", pollsRoutes(knex));
+app.use(knexLogger(knex));
+// app.get("/api/polls/:id, (req, res) => {pollsRoutes(knex)};");
+app.use("/api/polls/:id", pollsRoutes(knex));
 //POST or PUT listeners
-app.post("/polls/", (req, res) => {
-  let newPollId = generateRandomNumbers(6);
-  let newPollMaker = req.body['newPoll']['maker'];
-  let newPollTitle = req.body['newPoll']['title'];
-  let newPollOptions = req.body['options'];
-  let pollResults = "http://localhost:8080/polls/" + newPollId + "/results";
-  let pollUrl = "http://localhost:8080/polls/" + newPollId;
-  //Inserts The Poll Into DB
-  knex('polls').insert({id: newPollId, maker: newPollMaker, title: newPollTitle, voter_count: 0}).then(function() {
-    //Create Maker With E-Mail And Tie The Poll To Them
-    knex('makers').insert({ email: newPollMaker, polls_id: newPollId} ).then(function() {
-      //Inserts Options Into DB
-      for (var key in newPollOptions) {
-        knex('options').insert({polls_id: newPollId, title: newPollOptions[key]['title'], description: newPollOptions[key]['description'], points: 0}).then(function() {
-        });
-      }
-    });
-  //INSERT MAILGUN FUNCTION CALL HERE
-  console.log("new poll", newPollMaker);
-  sendEmail(newPollMaker, pollResults, pollUrl);
+// app.post("/polls/", (req, res) => {
+//   let newPollId = generateRandomNumbers(6);
+//   let newPollMaker = req.body['newPoll']['maker'];
+//   let newPollTitle = req.body['newPoll']['title'];
+//   let newPollOptions = req.body['options'];
+//   let pollResults = "http://localhost:8080/polls/" + newPollId + "/results";
+//   let pollUrl = "http://localhost:8080/polls/" + newPollId;
+//   //Inserts The Poll Into DB
+//   knex('polls').insert({id: newPollId, maker: newPollMaker, title: newPollTitle, voter_count: 0}).then(function() {
+//     //Create Maker With E-Mail And Tie The Poll To Them
+//     knex('makers').insert({ email: newPollMaker, polls_id: newPollId} ).then(function() {
+//       //Inserts Options Into DB
+//       for (var key in newPollOptions) {
+//         knex('options').insert({polls_id: newPollId, title: newPollOptions[key]['title'], description: newPollOptions[key]['description'], points: 0}).then(function() {
+//         });
+//       }
+//     });
+//   //INSERT MAILGUN FUNCTION CALL HERE
+//   console.log("new poll", newPollMaker);
+//   sendEmail(newPollMaker, pollResults, pollUrl);
 
-  res.redirect("/polls/" + newPollId + "/results");
-  return;
-  });
-});
+//   res.redirect("/polls/" + newPollId + "/results");
+//   return;
+//   });
+// });
 
 
-app.put("/polls/:id", (req, res) => {
-  let whichPoll = req.body['whichPoll'];
-  let votes = req.body['newVotes'];
-  for (var key in votes) {
-    //Adds The Points To The Correct Options
-    // console.log('Finding...ID: ', votes[key]['id']);
-    knex('options').where('id', votes[key]['id']).update({ 'points': knex.raw(`points + ${votes[key]['points']}`)}).then(function() {
-    })
-  }
-  //INSERT MAILGUN FUNCTION CALL HERE
-  res.redirect("/polls/" + req.params.id + "/results");
-});
+// app.put("/polls/:id", (req, res) => {
+//   let whichPoll = req.body['whichPoll'];
+//   let votes = req.body['newVotes'];
+//   for (var key in votes) {
+//     //Adds The Points To The Correct Options
+//     // console.log('Finding...ID: ', votes[key]['id']);
+//     knex('options').where('id', votes[key]['id']).update({ 'points': knex.raw(`points + ${votes[key]['points']}`)}).then(function() {
+//     })
+//   }
+//   //INSERT MAILGUN FUNCTION CALL HERE
+//   res.redirect("/polls/" + req.params.id + "/results");
+// });
 
 
 
 // GET listeners
 
-//Renders index page on home root visit
+// Renders index page on home root visit
 app.get("/", (req, res) => {
-  res.render("/public/index.html");
-});
-
-
-
-//Redirects user to home on visiting /polls
-app.get("/polls/", (req, res) => {
-  res.redirect("/");
+  res.render("index");
 });
 
 //Loads the vote page for the current poll
 app.get("/polls/:id", (req, res) => {
-  // console.log(req.params.id)
+console.log("app.get.polls")
 
-  // let allOptionsForPoll = {};
-//   knex('options').where({'polls_id': req.params.id}).then(function(rows) {
-//     for (let i=0; i < rows.length; i++) {
-//       allOptionsForPoll["option" + i] = {};
-//       allOptionsForPoll["option" + i]['id'] = rows[i]['id'];
-//       allOptionsForPoll["option" + i]['polls_id'] = rows[i]['polls_id'];
-//       allOptionsForPoll["option" + i]['description'] = rows[i]['description'];
-//       allOptionsForPoll["option" + i]['title'] = rows[i]['title'];
-//       allOptionsForPoll["option" + i]['points'] = rows[i]['points'];
-//     }
-//   // console.log('Final Results In An Object For The Website!', allOptionsForPoll);
-  res.render("vote");
-//   })
+res.render("vote");
+
+  //   })
 });
+
+// Redirects user to home on visiting /polls
+app.get("/polls/", (req, res) => {
+  res.render("vote");
+  // res.redirect("/");
+});
+
+
 
 //Loads the results page for the current poll
-app.get("/polls/:id/results", (req, res) => {
-  let allResultsForPoll = {};
-  knex('options').where({'polls_id': req.params.id}).then(function(rows) {
-    for (let i=0; i < rows.length; i++) {
-      allResultsForPoll["option" + i] = {};
-      allResultsForPoll["option" + i]['id'] = rows[i]['id'];
-      allResultsForPoll["option" + i]['polls_id'] = rows[i]['polls_id'];
-      allResultsForPoll["option" + i]['description'] = rows[i]['description'];
-      allResultsForPoll["option" + i]['title'] = rows[i]['title'];
-      allResultsForPoll["option" + i]['points'] = rows[i]['points'];
-    }
-  // console.log('Final Results In An Object For The Website!', allResultsForPoll);
-  res.render("results", allResultsForPoll);
-  })
-});
+// app.get("/polls/:id/results", (req, res) => {
+//   // let allResultsForPoll = {};
+//   // knex('options').where({'polls_id': req.params.id}).then(function(rows) {
+//   //   for (let i=0; i < rows.length; i++) {
+//   //     allResultsForPoll["option" + i] = {};
+//   //     allResultsForPoll["option" + i]['id'] = rows[i]['id'];
+//   //     allResultsForPoll["option" + i]['polls_id'] = rows[i]['polls_id'];
+//   //     allResultsForPoll["option" + i]['description'] = rows[i]['description'];
+//   //     allResultsForPoll["option" + i]['title'] = rows[i]['title'];
+//   //     allResultsForPoll["option" + i]['points'] = rows[i]['points'];
+//   //   }
+//   // console.log('Final Results In An Object For The Website!', allResultsForPoll);
+//   res.render("results");
+//   // })
+// });
 
 
 app.listen(PORT, () => {

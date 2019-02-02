@@ -1,14 +1,17 @@
-
 $(() => {
-  console.log();
+const url = window.location.href;
+const result = /[^/]*$/.exec(url)[0];
+
   $.ajax({
     method: "GET",
-    url: "/api/polls/"
+    url: `/api/polls/${result}`
   }).done((options) => {
-    alert(document.URL);
-    for (let i=0; i < options.length; i++) {
-      $("<div>").text(options[i]['title']).appendTo($("body"));
-      $("<div>").text(options[i]['description']).appendTo($("body"));
+    for(option of options) {
+      if (option.polls_id == result) {
+        console.log(typeof option.polls_id)
+      $("<div>").text(option.title).appendTo($("body"));
+      $("<div>").text(option.description).appendTo($("body"));
+      }
     }
   });
 });
