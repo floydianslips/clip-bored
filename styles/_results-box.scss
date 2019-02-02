@@ -1,0 +1,63 @@
+@import "layout.scss";
+
+.create {
+  margin: 1em auto;
+  max-width: 500px;
+  color: $indigo;
+  background-color: $dust;
+  .question-wrapper{
+    background-color: $teal;
+    padding: 1.5em .5em 1em ;
+    input {
+      width: 100%;
+      color: $indigo;
+      font-weight: 500;
+    }
+  }
+  .question-options {
+    padding: 1em;
+    font-size: .8em;
+    .option-input-wrapper {
+      display: flex;
+      .option {
+        color: $indigo;
+        padding: .5em;
+        width: 100%;
+        border-bottom: 1px solid $teal;
+      }
+      .pencil-btn {
+        margin: .5em;
+        padding: 1px;
+        background-color: $dust;
+        border: none;
+      }
+    }
+    .description-field {
+      color: $indigo;
+      border-bottom: 1px solid $teal;
+    }
+  }
+  footer {
+    padding: 1em;
+    display: flex;
+    justify-content: flex-end;
+    .email {
+      font-size: small;
+      color: $indigo;
+      border: 1px solid $teal;
+      border-radius: 5px;
+      padding: 0 .5em;
+    }
+    .btn {
+      width: 30%;
+      margin-left: 1em;
+      color: $dust;
+      background-color: $teal;
+      border-radius: 7px;
+      &:hover {
+        background-color: darken($teal, 5%);
+        cursor: pointer;
+      }
+    }
+  }
+}
