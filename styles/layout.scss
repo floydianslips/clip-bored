@@ -41,6 +41,12 @@ input {
   outline:none;
 }
 
+@include media-breakpoint-down(xl) {
+  .container-flex {
+    margin: 6em;
+  }
+}
+
 @include media-breakpoint-down(lg) {
   .container-flex {
     margin: 5em;
@@ -71,8 +77,8 @@ input {
   }
 }
 
-@media (min-width: 1200px) {
-  .container-flex {
-    margin: 6em;
-  }
-}
+// @media (min-width: 1200px) {
+//   .container-flex {
+//     margin: 6em;
+//   }
+// }
