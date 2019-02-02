@@ -88,6 +88,8 @@ app.get("/", (req, res) => {
   res.render("/public/index.html");
 });
 
+
+
 //Redirects user to home on visiting /polls
 app.get("/polls/", (req, res) => {
   res.redirect("/");
