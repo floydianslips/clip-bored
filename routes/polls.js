@@ -6,11 +6,15 @@ const router  = express.Router();
 module.exports = (knex) => {
   router.get("/", (req, res) => {
        knex
-      .select("*")
+      .select("*", "options.title AS question")
       .from("options")
+       .leftOuterJoin("polls", "polls_id", "polls.id")
       .then((results) => {
        res.json(results);
-    });
+       console.log(results)
+      });
   });
+  
   return router;
 };
+

@@ -6,10 +6,11 @@ const result = /[^/]*$/.exec(url)[0];
     method: "GET",
     url: `/api/polls/${result}`
   }).done((options) => {
-    for(option of options) {
+     $("<header>").text(options[result].title).appendTo($("body"));
+     for(option of options) {
+      console.log(option.question)
       if (option.polls_id == result) {
-        console.log(typeof option.polls_id)
-      $("<div>").text(option.title).appendTo($("body"));
+      $("<div>").text(option.question).appendTo($("body"));
       $("<div>").text(option.description).appendTo($("body"));
       }
     }
