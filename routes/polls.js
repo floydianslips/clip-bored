@@ -2,14 +2,15 @@
 
 const express = require('express');
 const router  = express.Router();
-console.log("help")
 module.exports = (knex) => {
   // knex('options').where({'polls_id': req.params.id}).then(function(rows) {
 
-  router.get("/", (req, res) => {
+  router.get("/:id", (req, res) => {
+    console.log(req.params.id)
+
     knex
       .select("*")
-      .from("options").where({polls_id: 2})
+      .from("options").where({polls_id: req.params.id})
       .then((results) => {
 
         res.json(results);

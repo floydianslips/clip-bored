@@ -13,9 +13,10 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const pollsRoutes = require("./routes/polls");
+// usersRoutes();
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -36,8 +37,7 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
-
+app.use("/polls", pollsRoutes(knex));
 //POST or PUT listeners
 app.post("/polls/", (req, res) => {
   let newPollId = generateRandomNumbers(6);
@@ -95,19 +95,21 @@ app.get("/polls/", (req, res) => {
 
 //Loads the vote page for the current poll
 app.get("/polls/:id", (req, res) => {
-  let allOptionsForPoll = {};
-  knex('options').where({'polls_id': req.params.id}).then(function(rows) {
-    for (let i=0; i < rows.length; i++) {
-      allOptionsForPoll["option" + i] = {};
-      allOptionsForPoll["option" + i]['id'] = rows[i]['id'];
-      allOptionsForPoll["option" + i]['polls_id'] = rows[i]['polls_id'];
-      allOptionsForPoll["option" + i]['description'] = rows[i]['description'];
-      allOptionsForPoll["option" + i]['title'] = rows[i]['title'];
-      allOptionsForPoll["option" + i]['points'] = rows[i]['points'];
-    }
-  // console.log('Final Results In An Object For The Website!', allOptionsForPoll);
-  res.render("vote", allOptionsForPoll);
-  })
+  // console.log(req.params.id)
+
+  // let allOptionsForPoll = {};
+//   knex('options').where({'polls_id': req.params.id}).then(function(rows) {
+//     for (let i=0; i < rows.length; i++) {
+//       allOptionsForPoll["option" + i] = {};
+//       allOptionsForPoll["option" + i]['id'] = rows[i]['id'];
+//       allOptionsForPoll["option" + i]['polls_id'] = rows[i]['polls_id'];
+//       allOptionsForPoll["option" + i]['description'] = rows[i]['description'];
+//       allOptionsForPoll["option" + i]['title'] = rows[i]['title'];
+//       allOptionsForPoll["option" + i]['points'] = rows[i]['points'];
+//     }
+//   // console.log('Final Results In An Object For The Website!', allOptionsForPoll);
+  res.render("vote");
+//   })
 });
 
 //Loads the results page for the current poll
