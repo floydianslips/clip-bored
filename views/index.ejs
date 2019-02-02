@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+ <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,11 +17,7 @@
   <!-- Animate CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/poll-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -64,28 +60,29 @@
         <div class="col col-md-6 justify-content-end">
           <form method="POST" autocomplete="off" class="create rounded shadow">
 
-            <div class="question rounded-top just">
+            <div class="question-wrapper rounded-top">
               <input type="text" class="question" placeholder="Choose your question... ">
             </div>
 
             <div class="question-options">
-              <!-- <div class="description-wrapper"> -->
+
               <div class="option-input-wrapper">
                 <input type="text" class="option" name="option1" placeholder="Add your first option...">
                 <button class="pencil-btn btn-sm">✏️</button>
               </div>
-              <!-- <input type="text" class="question-description "> -->
-            <!-- </div> -->
+              <input type="text" name="option-description1" class="description-field" placeholder="Description...">
 
               <div class="option-input-wrapper">
                 <input type="text" class="option" name="option2"  placeholder="Add your second option...">
                 <button class="pencil-btn btn-sm">✏️</button>
               </div>
+              <input type="text" name="option-description2" class="description-field" placeholder="Description...">
+
             </div>
 
             <footer class="rounded-bottom">
               <input type="email" class="email" placeholder="Enter your email...">
-              <button class="btn shadow-sm">Submit</button>
+              <input type="submit" class="btn shadow-sm">
             </footer>
 
           </form>

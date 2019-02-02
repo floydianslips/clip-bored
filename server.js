@@ -27,11 +27,24 @@ const pollsRoutes = require("./routes/polls");
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
-app.use(knexLogger(knex));
-app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
-app.set("view engine", "html");
-// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(knexLogger(knex));
+// app.set('views', path.join(__dirname, 'views'));
+// app.engine('html', require('ejs').renderFile);
+// app.set("view engine", "html");
+// // app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use("/styles", sass({
+//   src: __dirname + "/styles",
+//   dest: __dirname + "/styles",
+//   debug: true,
+//   outputStyle: 'expanded'
+// }));
+// app.set('/vendor', path.join(__dirname, 'public', 'vendor'));
+// app.set('/scripts', path.join(__dirname, 'public', 'scripts'));
+// app.use(express.static("views"));
+
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -39,7 +52,8 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
-// app.use(express.static("views"));
+app.use(express.static("public"));
+
 
 
 // Mount all resource routes
@@ -66,7 +80,7 @@ app.post("/polls", (req, res) => {
   console.log("new poll", newPollMaker);
   sendEmail(newPollMaker, pollResults, pollUrl);
 
-  res.redirect("/polls/" + newPollId + "/results");
+  res.redirect("/polls" + newPollId + "/results");
   return;
   });
 });
@@ -94,11 +108,11 @@ app.put("/polls/:id", (req, res) => {
 
 //why don't these work like the one above ?? ^^^
 app.get("/vote", (req, res) => {
-  res.render("vote.html");
+  res.render("vote");
 });
 
 app.get("/results", (req, res) => {
-  res.render("results.html");
+  res.render("results");
 });
 
 
@@ -144,7 +158,7 @@ app.get("/polls/:id/results", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("/public/index.html");
+  res.render("index");
 });
 
 
