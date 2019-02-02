@@ -1,7 +1,84 @@
-body {
-  background-color: #EEE;
+// Custom.scss
+// Option B: Include parts of Bootstrap
 
-  h1 {
-    color: #244751;
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// Optional
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/code";
+@import "../node_modules/bootstrap/scss/grid";
+
+// Custom Palette (Officana)
+$dust  : rgba(245, 241, 237, 1);
+
+body {
+  color: $dust;
+  background-color: $indigo;
+  font: {
+    family: 'Montserrat', sans-serif;
+    size: 1em;
+    weight: 300;
   }
 }
+
+h1, h2, h3 {
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  border: none;
+  background-color: inherit;
+  font-weight: 300;
+}
+
+:focus {
+  outline:none;
+}
+
+@include media-breakpoint-down(xl) {
+  .container-flex {
+    margin: 6em;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .container-flex {
+    margin: 5em;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .container-flex {
+      margin: 4em;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  body {
+    font-size: small;
+    .container-flex {
+      margin: 2em;
+      .welcome {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container-flex {
+    margin: 1em;
+  }
+}
+
+// @media (min-width: 1200px) {
+//   .container-flex {
+//     margin: 6em;
+//   }
+// }
