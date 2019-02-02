@@ -3,4 +3,6 @@ public/styles
 .env
 *.log
 *.sqlite3
+email-config.js
+public/.DS_Store
 .DS_store
