@@ -1,11 +1,11 @@
 @import "layout.scss";
 
 .create {
-  margin: 0 auto;
+  margin: 1em auto;
   max-width: 500px;
   color: $indigo;
   background-color: $dust;
-  .question {
+  .question-wrapper{
     background-color: $teal;
     padding: 1.5em .5em 1em ;
     input {
@@ -17,26 +17,24 @@
   .question-options {
     padding: 1em;
     font-size: .8em;
-    // .description-wrapper {
-    //   display:flex;
-    //   flex-direction: column;
-    // }
     .option-input-wrapper {
       display: flex;
-      .pencil-btn {
-        margin-left: .5em;
-        padding: 1px;
-        background-color: $dust;
-        border: none;
-        cursor: pointer;
-      }
       .option {
         color: $indigo;
         padding: .5em;
         width: 100%;
-        border: none;
         border-bottom: 1px solid $teal;
       }
+      .pencil-btn {
+        margin: .5em;
+        padding: 1px;
+        background-color: $dust;
+        border: none;
+      }
+    }
+    .description-field {
+      color: $indigo;
+      border-bottom: 1px solid $teal;
     }
   }
   footer {
@@ -45,13 +43,13 @@
     justify-content: flex-end;
     .email {
       font-size: small;
-      padding: .5em;
       color: $indigo;
       border: 1px solid $teal;
       border-radius: 5px;
       padding: 0 .5em;
     }
     .btn {
+      width: 30%;
       margin-left: 1em;
       color: $dust;
       background-color: $teal;

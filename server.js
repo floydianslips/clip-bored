@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const path        = require('path');
 // Seperated Routes for each Resource
 const pollsRoutes = require("./routes/polls");
 // usersRoutes();
@@ -20,13 +21,30 @@ const pollsRoutes = require("./routes/polls");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+
+
+
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
-app.use(knexLogger(knex));
+// app.use(knexLogger(knex));
+// app.set('views', path.join(__dirname, 'views'));
+// app.engine('html', require('ejs').renderFile);
+// app.set("view engine", "html");
+// // app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use("/styles", sass({
+//   src: __dirname + "/styles",
+//   dest: __dirname + "/styles",
+//   debug: true,
+//   outputStyle: 'expanded'
+// }));
+// app.set('/vendor', path.join(__dirname, 'public', 'vendor'));
+// app.set('/scripts', path.join(__dirname, 'public', 'scripts'));
+// app.use(express.static("views"));
 
 app.set("view engine", "ejs");
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -36,10 +54,12 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+
+
 // Mount all resource routes
 app.use("/polls", pollsRoutes(knex));
 //POST or PUT listeners
-app.post("/polls/", (req, res) => {
+app.post("/polls", (req, res) => {
   let newPollId = generateRandomNumbers(6);
   let newPollMaker = req.body['newPoll']['maker'];
   let newPollTitle = req.body['newPoll']['title'];
@@ -59,7 +79,7 @@ app.post("/polls/", (req, res) => {
   //Send E-mail to Maker With Information About Their Poll
   sendEmail(newPollMaker, pollResults, pollUrl, `you have created poll ${newPollId}`, 'Thank-you for creating a poll! Here is all the information you need!');
 
-  res.redirect("/polls/" + newPollId + "/results");
+  res.redirect("/polls" + newPollId + "/results");
   return;
   });
 });
@@ -75,11 +95,16 @@ app.put("/polls/:id", (req, res) => {
     knex('options').where('id', votes[key]['id']).update({ 'points': knex.raw(`points + ${votes[key]['points']}`)}).then(function() {
     })
   }
+<<<<<<< HEAD
   knex('makers').where('polls_id', req.params.id).then((results) =>  {
     email = results[0]['email'];
     sendEmail(email, pollResults, pollUrl, `someone voted on poll ${req.params.id}`, 'Someone voted on your poll! Check it out!');
     res.redirect("/polls/" + req.params.id + "/results");
   });
+=======
+  //INSERT MAILGUN FUNCTION CALL HERE
+  res.redirect("/polls" + req.params.id + "/results");
+>>>>>>> e4959e5b01749cba96c7bd6b2616deeee3bba607
 });
 
 
@@ -87,14 +112,20 @@ app.put("/polls/:id", (req, res) => {
 // GET listeners
 
 //Renders index page on home root visit
-app.get("/", (req, res) => {
-  res.render("/public/index.html");
+
+
+//why don't these work like the one above ?? ^^^
+app.get("/vote", (req, res) => {
+  res.render("vote");
+});
+
+app.get("/results", (req, res) => {
+  res.render("results");
 });
 
 
-
 //Redirects user to home on visiting /polls
-app.get("/polls/", (req, res) => {
+app.get("/polls", (req, res) => {
   res.redirect("/");
 });
 
@@ -132,6 +163,10 @@ app.get("/polls/:id/results", (req, res) => {
   // console.log('Final Results In An Object For The Website!', allResultsForPoll);
   res.render("results", allResultsForPoll);
   })
+});
+
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
 
