@@ -56,9 +56,8 @@ app.post("/polls/", (req, res) => {
         });
       }
     });
-  //INSERT MAILGUN FUNCTION CALL HERE
-  console.log("new poll", newPollMaker);
-  sendEmail(newPollMaker, pollResults, pollUrl);
+  //Send E-mail to Maker With Information About Their Poll
+  sendEmail(newPollMaker, pollResults, pollUrl, `you have created poll ${newPollId}`, 'Thank-you for creating a poll! Here is all the information you need!');
 
   res.redirect("/polls/" + newPollId + "/results");
   return;
@@ -67,16 +66,20 @@ app.post("/polls/", (req, res) => {
 
 
 app.put("/polls/:id", (req, res) => {
-  let whichPoll = req.body['whichPoll'];
   let votes = req.body['newVotes'];
+  let email = 'unknown';
+  let pollUrl = "http://localhost:8080/polls/" + req.params.id;
+  let pollResults = "http://localhost:8080/polls/" + req.params.id + "/results";
   for (var key in votes) {
     //Adds The Points To The Correct Options
-    // console.log('Finding...ID: ', votes[key]['id']);
     knex('options').where('id', votes[key]['id']).update({ 'points': knex.raw(`points + ${votes[key]['points']}`)}).then(function() {
     })
   }
-  //INSERT MAILGUN FUNCTION CALL HERE
-  res.redirect("/polls/" + req.params.id + "/results");
+  knex('makers').where('polls_id', req.params.id).then((results) =>  {
+    email = results[0]['email'];
+    sendEmail(email, pollResults, pollUrl, `someone voted on poll ${req.params.id}`, 'Someone voted on your poll! Check it out!');
+    res.redirect("/polls/" + req.params.id + "/results");
+  });
 });
 
 
