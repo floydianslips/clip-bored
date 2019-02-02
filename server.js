@@ -95,16 +95,11 @@ app.put("/polls/:id", (req, res) => {
     knex('options').where('id', votes[key]['id']).update({ 'points': knex.raw(`points + ${votes[key]['points']}`)}).then(function() {
     })
   }
-<<<<<<< HEAD
   knex('makers').where('polls_id', req.params.id).then((results) =>  {
     email = results[0]['email'];
     sendEmail(email, pollResults, pollUrl, `someone voted on poll ${req.params.id}`, 'Someone voted on your poll! Check it out!');
     res.redirect("/polls/" + req.params.id + "/results");
   });
-=======
-  //INSERT MAILGUN FUNCTION CALL HERE
-  res.redirect("/polls" + req.params.id + "/results");
->>>>>>> e4959e5b01749cba96c7bd6b2616deeee3bba607
 });
 
 
