@@ -1,11 +1,11 @@
 $(function() {
 
-
   $(".pencil-btn").on("click", function() {
     event.preventDefault();
   });
 
   $(".question-options").on("focus", ".option", function() {
+
     let endNum = Number((this).name.substr(6)) +1;
     let lastOption = ($(".option").last())[0];
     let optionName = lastOption.name;

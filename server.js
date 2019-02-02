@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const path        = require('path');
 // Seperated Routes for each Resource
 const pollsRoutes = require("./routes/polls");
 // usersRoutes();
@@ -20,12 +21,16 @@ const pollsRoutes = require("./routes/polls");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+
+
+
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
-
-app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').renderFile);
+app.set("view engine", "html");
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/styles", sass({
@@ -34,12 +39,13 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
-app.use(express.static("public"));
+// app.use(express.static("views"));
+
 
 // Mount all resource routes
 app.use("/polls", pollsRoutes(knex));
 //POST or PUT listeners
-app.post("/polls/", (req, res) => {
+app.post("/polls", (req, res) => {
   let newPollId = generateRandomNumbers(6);
   let newPollMaker = req.body['newPoll']['maker'];
   let newPollTitle = req.body['newPoll']['title'];
@@ -76,7 +82,7 @@ app.put("/polls/:id", (req, res) => {
     })
   }
   //INSERT MAILGUN FUNCTION CALL HERE
-  res.redirect("/polls/" + req.params.id + "/results");
+  res.redirect("/polls" + req.params.id + "/results");
 });
 
 
@@ -84,14 +90,20 @@ app.put("/polls/:id", (req, res) => {
 // GET listeners
 
 //Renders index page on home root visit
-app.get("/", (req, res) => {
-  res.render("/public/index.html");
+
+
+//why don't these work like the one above ?? ^^^
+app.get("/vote", (req, res) => {
+  res.render("vote.html");
+});
+
+app.get("/results", (req, res) => {
+  res.render("results.html");
 });
 
 
-
 //Redirects user to home on visiting /polls
-app.get("/polls/", (req, res) => {
+app.get("/polls", (req, res) => {
   res.redirect("/");
 });
 
@@ -129,6 +141,10 @@ app.get("/polls/:id/results", (req, res) => {
   // console.log('Final Results In An Object For The Website!', allResultsForPoll);
   res.render("results", allResultsForPoll);
   })
+});
+
+app.get("/", (req, res) => {
+  res.render("/public/index.html");
 });
 
 
