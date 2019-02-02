@@ -85,8 +85,10 @@ app.put("/polls/:id", (req, res) => {
 
 //Renders index page on home root visit
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("/public/index.html");
 });
+
+
 
 //Redirects user to home on visiting /polls
 app.get("/polls/", (req, res) => {
