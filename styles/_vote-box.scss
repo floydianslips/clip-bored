@@ -1,0 +1,33 @@
+@import "layout.scss";
+
+.results-box {
+  margin: 1em auto;
+  max-width: 500px;
+  max-height: 600px;
+  overflow: scroll;
+  color: $indigo;
+  background-color: $dust;
+  .answer-wrapper {
+    background-color: $teal;
+    padding: 1em 1em .5em;
+  }
+  .question-options-answers {
+    padding: 1em;
+    .option-answer-wrapper {
+      padding-top: 1em;
+      border-bottom: 1px dotted lighten($indigo, 30%);
+      .answer {
+        font-size: 1.3em;
+        color: $indigo;
+        width: 100%;
+      }
+    }
+    .answer-description {
+      color: $indigo;
+      margin: .5em 0;
+    }
+    .vote-form {
+      margin: .5em 0 0;
+    }
+  }
+}

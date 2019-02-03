@@ -19,7 +19,8 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/poll-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/vote.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/vote-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
 
@@ -37,13 +38,72 @@
 <body>
 
   <nav class="navbar navbar-custom shadow-sm">
-    <a href="index.ejs" class="navbar-brand">Clipbored!?</a>
+    <a href="" class="navbar-brand">Clipbored!?</a>
   </nav>
-  <!-- BS4 container -->
+
   <main class="container-flex">
-    <!-- main row start -->
       <div class="row justify-content-center">
+
+        <div class="col col-md-6">
+
+          <section class="intro-blurb ">
+            <h1 class="welcome">Welcome to <span>Clipbored!?</span></h1>
+            <p class="blurb">
+            The place to make quick polls and share with your fiends. For example,
+            "What food do we want to get on friday? Sushi, pizza, or burgers?" <br>
+            Here's the place to cast your vote on a poll. Consider your options, read the descriptions, then make your choices. We use the borda count system, so you get to rank each option from your most to least favourite. Rank your favourite number one, and your least favourite the highest number (up to five).
+            </p>
+          </section>
+
+        </div>
+
+        <div class="col col-md-6 justify-content-end">
+        <section class="results-box rounded shadow">
+
+          <div class="answer-wrapper rounded-top">
+            <h2 class="maker-question">Do you like bacon?</h2>
+          </div>
+
+          <div class="question-options-answers">
+
+            <div class="option-answer-wrapper">
+              <h3 class="answer answer0">Yes of course I like bacon!</h3>
+              <p class="answer-description answer1-description">Because bacon is life, duh.</p>
+            </div>
+            <form method="POST" class="vote-form vote-dropdown0" name="dropdown0">
+              <label>Rank me: </label>
+              <select class="vote-list">
+                <option value = "1">one</option>
+                <option value = "2">two</option>
+                <option value = "3">three</option>
+                <option value = "4">four</option>
+                <option value = "5">five</option>
+              </select>
+            </form>
+
+            <div class="option-answer-wrapper">
+              <h3 class="answer answer1">I like to smell it but not eat it.</h3>
+              <p class="answer-description answer1-description"> Because Im a recovering vegetarian.</p>
+            </div>
+            <form method="POST" class="vote-form vote-dropdown1" name="dropdown1">
+                <label>Rank me: </label>
+                <select class="vote-list">
+                  <option value = "1">one</option>
+                  <option value = "2">two</option>
+                  <option value = "3">three</option>
+                  <option value = "4">four</option>
+                  <option value = "5">five</option>
+                </select>
+              </form>
+
+          </div>
+
+        </section>
       </div>
+
+      </div>
+
+
     <!-- BS4 container-flex end -->
   </main>
 </body>
