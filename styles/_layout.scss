@@ -13,8 +13,10 @@
 @import "../node_modules/bootstrap/scss/code";
 @import "../node_modules/bootstrap/scss/grid";
 
-// Custom Palette (Officana)
-$dust  : rgba(245, 241, 237, 1);
+// Palette
+$dust  : #f5f1ed;
+$indigo: #5756a7;
+$teal  : #20c997;
 
 body {
   color: $dust;
@@ -25,6 +27,7 @@ body {
     weight: 300;
   }
 }
+
 
 h1, h2, h3 {
   font-weight: 500;
@@ -40,6 +43,10 @@ input {
 
 :focus {
   outline:none;
+}
+
+button:focus {
+  outline: 0;
 }
 
 .hidden {
@@ -65,10 +72,10 @@ input {
 }
 
 @include media-breakpoint-down(sm) {
-  body {
-    font-size: small;
+  html {
+    font-size: 1.2;
     .container-flex {
-      margin: 2em;
+      margin: 1rem;
       .welcome {
         font-size: 2em;
       }
@@ -78,12 +85,7 @@ input {
 
 @include media-breakpoint-down(xs) {
   .container-flex {
-    margin: 1em;
+    margin: .5rem;
   }
 }
 
-// @media (min-width: 1200px) {
-//   .container-flex {
-//     margin: 6em;
-//   }
-// }

@@ -1,0 +1,18 @@
+@import "layout.scss";
+@import "nav.scss";
+@import "results-box.scss";
+
+
+.intro-blurb h1 {
+  font-size: 2.5em;
+  span {
+    color: $teal;
+  }
+}
+  .blurb a {
+    color: inherit;
+    &:hover {
+      text-decoration: none;
+      color: $teal;
+    }
+  }

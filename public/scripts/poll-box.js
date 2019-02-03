@@ -25,4 +25,9 @@ $(function() {
     }
   });
 
+  $(".submit-btn").on("click", function() {
+    event.preventDefault();
+    //check to see that at least two question fields and email is filled out, then if yes, POST form content.
+  });
+
 });
