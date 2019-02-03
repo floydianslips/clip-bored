@@ -9,7 +9,7 @@ module.exports = (knex) => {
       .select("*", "options.title AS question")
       .from("options")
        .leftOuterJoin("polls", "polls_id", "polls.id")
-       .orderBy("points", "desc")
+//        .orderBy("points", "desc")
       .then((results) => {
        res.json(results);
        console.log(results)
