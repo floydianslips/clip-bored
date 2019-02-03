@@ -13,8 +13,8 @@ $(function() {
 
     const optionInputWrapper = $("<div>").addClass("option-input-wrapper");
     const newInput = $("<input>").addClass( "option" ).attr( "placeholder", "And another..." ).attr( "name", `option${endNum}`);
-    const newPencil = $("<btn>").addClass("pencil-btn", "btn-sm").text("✏️");
-    const fullInputWrapper = $(optionInputWrapper).append(newInput, newPencil);
+    // const newPencil = $("<btn>").addClass("pencil-btn", "btn-sm").text("✏️");
+    const fullInputWrapper = $(optionInputWrapper).append(newInput);
     const descriptionField = $("<input>").addClass( "description-field" ).attr( "placeholder", "Description..." ).attr( "name", `option-description${endNum}`);
 
 

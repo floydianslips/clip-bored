@@ -22,13 +22,10 @@
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <!-- Optional JavaScript -->
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/home.js"></script>
   <script type="text/javascript" src="/scripts/poll-box.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
     crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-    crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -67,22 +64,20 @@
             <div class="question-options">
 
               <div class="option-input-wrapper">
-                <input type="text" class="option" name="option1" placeholder="Add your first option...">
-                <button class="pencil-btn btn-sm">✏️</button>
+                <input type="text" class="option" name="option0" placeholder="Add your first option...">
               </div>
-              <input type="text" name="option-description1" class="description-field" placeholder="Description...">
+              <input type="text" name="option-description0" class="description-field" placeholder="Optional Description...">
 
               <div class="option-input-wrapper">
-                <input type="text" class="option" name="option2"  placeholder="Add your second option...">
-                <button class="pencil-btn btn-sm">✏️</button>
+                <input type="text" class="option" name="option1"  placeholder="Add your second option...">
               </div>
-              <input type="text" name="option-description2" class="description-field" placeholder="Description...">
+              <input type="text" name="option-description1" class="description-field" placeholder="Optional Description...">
 
             </div>
 
             <footer class="rounded-bottom">
               <input type="email" class="email" placeholder="Enter your email...">
-              <input type="submit" class="btn shadow-sm">
+              <input type="submit" id="manifest-poll" class="btn shadow-sm">
             </footer>
 
           </form>
