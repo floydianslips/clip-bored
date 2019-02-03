@@ -65,7 +65,7 @@ app.post("/polls", (req, res) => {
   //Send E-mail to Maker With Information About Their Poll
   sendEmail(newPollMaker, pollResults, pollUrl, `you have created poll ${newPollId}`, 'Thank-you for creating a poll! Here is all the information you need!');
 
-  res.redirect("/polls" + newPollId + "/results");
+  res.send("/polls/" + newPollId + "/results");
   return;
   });
 });
