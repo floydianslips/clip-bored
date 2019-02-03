@@ -18,8 +18,8 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/index.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/poll-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/results.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/results-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
 
@@ -44,57 +44,70 @@
   <!-- BS4 container -->
   <main class="container-flex">
     <!-- main row start -->
-      <div class="row justify-content-center">
+    <div class="row justify-content-center">
 
-        <!--1st left col -->
-        <div class="col col-md-6">
+      <!--1st left col -->
+      <div class="col col-md-6">
 
-          <section class="intro-blurb ">
-            <h1 class="welcome"> Your <span>Clipbored!?</span> poll results!</h1>
-            <p class="blurb"> Here's the results of your <span> POLL NAME</span>, we hope you had fun using Clipbored!?.
-            </p>
-          </section>
-
-        </div>
-
-        <!-- 1st right col -->
-        <div class="col col-md-6 justify-content-end">
-          <form method="POST" autocomplete="off" class="create rounded shadow">
-
-            <div class="question-wrapper rounded-top">
-              <h2 class="question-results">Your Question: </h2>
-              <p>Do you like bacon?</p>
-              <p class="vote-count">Total votes:</p>
-              <!-- <input type="text" class="question" placeholder="Choose your question... "> -->
-            </div>
-
-            <div class="question-options">
-
-              <div class="option-input-wrapper">
-                <h3>Option: </h3>
-                <p>Desciption:</p>
-                <input type="text" class="option" name="option1" placeholder="Add your first option...">
-                <button class="pencil-btn btn-sm">✏️</button>
-              </div>
-              <input type="text" name="option-description1" class="description-field" placeholder="Description...">
-
-              <div class="option-input-wrapper">
-                <input type="text" class="option" name="option2"  placeholder="Add your second option...">
-                <button class="pencil-btn btn-sm">✏️</button>
-              </div>
-              <input type="text" name="option-description2" class="description-field" placeholder="Description...">
-
-            </div>
-
-            <footer class="rounded-bottom">
-              <input type="email" class="email" placeholder="Enter your email...">
-              <input type="submit" class="btn shadow-sm sumbit-btn">
-            </footer>
-
-          </form>
-        </div>
+        <section class="result-blurb">
+          <h1 class="your-results"> Your <span>Clipbored!?</span> poll results!</h1>
+          <p class="blurb"> Here's the results of your poll, we hope you had fun. Would you like to <a href="index.ejs">create another?</a>
+          </p>
+        </section>
 
       </div>
+
+      <!-- 1st right col -->
+      <div class="col col-md-6 justify-content-end">
+        <section class="results-box rounded shadow">
+
+          <div class="answer-wrapper rounded-top">
+            <h2 class="maker-question">Do you like bacon?</h2>
+            <span class="voter-count">Total voters: <strong>14</strong></span>
+          </div>
+
+          <div class="question-options-answers">
+
+            <div class="option-answer-wrapper">
+              <p class="rank"> Ranked <strong class="place">1st </strong> coming in at <strong class="b-points">30</strong>
+                points: 🌟</p>
+              <h3 class="answer answer1">Yes of course I like bacon!</h3>
+              <p class="answer-description answer1-description">Because bacon is life, duh.</p>
+            </div>
+
+            <div class="option-answer-wrapper">
+              <p class="rank"> Ranked <strong class="place">2nd </strong> coming in at <strong class="b-points">10</strong>
+                points:</p>
+              <h3 class="answer answer2">I like to smell it but not eat it.</h3>
+              <p class="answer-description answer2-description"> Because Im a recovering vegetarian.</p>
+            </div>
+
+            <div class="option-answer-wrapper">
+              <p class="rank"> Ranked <strong class="place">3rd </strong> coming in at <strong class="b-points">10</strong>
+                points:</p>
+              <h3 class="answer answer2"> Bacon?!?</h3>
+              <p class="answer-description answer2-description">Yeah bacon!</p>
+            </div>
+
+            <div class="option-answer-wrapper">
+              <p class="rank"> Ranked <strong class="place">4th </strong> coming in at <strong class="b-points">10</strong>
+                points:</p>
+              <h3 class="answer answer2">No way!</h3>
+              <p class="answer-description answer2-description">Because pigs are cute.</p>
+            </div>
+
+            <div class="option-answer-wrapper">
+              <p class="rank"> Ranked <strong class="place">last </strong> coming in at <strong class="b-points">10</strong>
+                points: 💩</p>
+              <h3 class="answer answer2">Get it away from me!</h3>
+              <p class="answer-description answer2-description">Because I'm a vegan.</p>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+    </div>
 
 
     <!-- BS4 container-flex end -->

@@ -16,6 +16,7 @@
 // Custom Palette (Officana)
 $dust  : rgba(245, 241, 237, 1);
 
+
 body {
   color: $dust;
   background-color: $indigo;
@@ -25,6 +26,7 @@ body {
     weight: 300;
   }
 }
+
 
 h1, h2, h3 {
   font-weight: 500;
@@ -46,15 +48,21 @@ input {
   display: none;
 }
 
-@include media-breakpoint-down(xl) {
+@include media-breakpoint-down(xs) {
   .container-flex {
-    margin: 6em;
+    margin: .5rem;
   }
 }
 
-@include media-breakpoint-down(lg) {
-  .container-flex {
-    margin: 5em;
+@include media-breakpoint-down(sm) {
+  html {
+    font-size: 1.2;
+    .container-flex {
+      margin: 2rem;
+      .welcome {
+        font-size: 2em;
+      }
+    }
   }
 }
 
@@ -64,26 +72,14 @@ input {
   }
 }
 
-@include media-breakpoint-down(sm) {
-  body {
-    font-size: small;
-    .container-flex {
-      margin: 2em;
-      .welcome {
-        font-size: 2em;
-      }
-    }
-  }
-}
-
-@include media-breakpoint-down(xs) {
+@include media-breakpoint-down(lg) {
   .container-flex {
-    margin: 1em;
+    margin: 5em;
   }
 }
 
-// @media (min-width: 1200px) {
-//   .container-flex {
-//     margin: 6em;
-//   }
-// }
+@include media-breakpoint-down(xl) {
+  .container-flex {
+    margin: 6em;
+  }
+}
