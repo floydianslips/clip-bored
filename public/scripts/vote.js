@@ -1,18 +1,23 @@
 $(() => {
 const url = window.location.href;
 const result = /[^/]*$/.exec(url)[0];
-
+let currentTitle = "";
+  
   $.ajax({
     method: "GET",
     url: `/api/polls/${result}`
   }).done((options) => {
-     $("<header>").text(options[result].title).appendTo($("body"));
+     
+     console.log(currentTitle)
      for(option of options) {
-      console.log(option.question)
+      
       if (option.polls_id == result) {
       $("<div>").text(option.question).appendTo($("body"));
       $("<div>").text(option.description).appendTo($("body"));
+      currentTitle = option.title
       }
+
     }
+    $("<header>").text(currentTitle).appendTo($("body"));
   });
 });

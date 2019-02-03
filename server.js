@@ -13,10 +13,10 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+
 // Seperated Routes for each Resource
 const pollsRoutes = require("./routes/polls");
-// usersRoutes();
-
+const resultsRoutes = require("./routes/results");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -40,6 +40,7 @@ app.use(express.static("public"));
 app.use(knexLogger(knex));
 // app.get("/api/polls/:id, (req, res) => {pollsRoutes(knex)};");
 app.use("/api/polls/:id", pollsRoutes(knex));
+app.use("/api/polls/:id/results", resultsRoutes(knex));
 //POST or PUT listeners
 // app.post("/polls/", (req, res) => {
 //   let newPollId = generateRandomNumbers(6);
@@ -108,21 +109,9 @@ app.get("/polls/", (req, res) => {
 
 
 //Loads the results page for the current poll
-// app.get("/polls/:id/results", (req, res) => {
-//   // let allResultsForPoll = {};
-//   // knex('options').where({'polls_id': req.params.id}).then(function(rows) {
-//   //   for (let i=0; i < rows.length; i++) {
-//   //     allResultsForPoll["option" + i] = {};
-//   //     allResultsForPoll["option" + i]['id'] = rows[i]['id'];
-//   //     allResultsForPoll["option" + i]['polls_id'] = rows[i]['polls_id'];
-//   //     allResultsForPoll["option" + i]['description'] = rows[i]['description'];
-//   //     allResultsForPoll["option" + i]['title'] = rows[i]['title'];
-//   //     allResultsForPoll["option" + i]['points'] = rows[i]['points'];
-//   //   }
-//   // console.log('Final Results In An Object For The Website!', allResultsForPoll);
-//   res.render("results");
-//   // })
-// });
+app.get("/polls/:id/results/", (req, res) => {
+  res.render("results");
+});
 
 
 app.listen(PORT, () => {
