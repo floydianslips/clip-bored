@@ -5,15 +5,14 @@ const router  = express.Router();
 
 module.exports = (knex) => {
   router.get("/", (req, res) => {
-       knex
-      .select("*", "options.title AS question")
-      .from("options")
-       .leftOuterJoin("polls", "polls_id", "polls.id")
-      .then((results) => {
-       res.json(results);
-      });
+    knex
+    .select("*", "options.title AS question")
+    .from("options")
+    .leftOuterJoin("polls", "polls_id", "polls.id")
+    .then((results) => {
+    res.json(results);
+    });
   });
-  
   return router;
 };
 
