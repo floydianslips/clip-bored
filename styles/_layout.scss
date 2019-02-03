@@ -13,9 +13,10 @@
 @import "../node_modules/bootstrap/scss/code";
 @import "../node_modules/bootstrap/scss/grid";
 
-// Custom Palette (Officana)
-$dust  : rgba(245, 241, 237, 1);
-
+// Palette
+$dust  : #f5f1ed;
+$indigo: #5861ab;
+$teal  : #20c997;
 
 body {
   color: $dust;
@@ -44,31 +45,17 @@ input {
   outline:none;
 }
 
+button:focus {
+  outline: 0;
+}
+
 .hidden {
   display: none;
 }
 
-@include media-breakpoint-down(xs) {
+@include media-breakpoint-down(xl) {
   .container-flex {
-    margin: .5rem;
-  }
-}
-
-@include media-breakpoint-down(sm) {
-  html {
-    font-size: 1.2;
-    .container-flex {
-      margin: 2rem;
-      .welcome {
-        font-size: 2em;
-      }
-    }
-  }
-}
-
-@include media-breakpoint-down(md) {
-  .container-flex {
-      margin: 4em;
+    margin: 6em;
   }
 }
 
@@ -78,8 +65,27 @@ input {
   }
 }
 
-@include media-breakpoint-down(xl) {
+@include media-breakpoint-down(md) {
   .container-flex {
-    margin: 6em;
+      margin: 4em;
   }
 }
+
+@include media-breakpoint-down(sm) {
+  html {
+    font-size: 1.2;
+    .container-flex {
+      margin: 1rem;
+      .welcome {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container-flex {
+    margin: .5rem;
+  }
+}
+

@@ -3,6 +3,8 @@
 .results-box {
   margin: 1em auto;
   max-width: 500px;
+  max-height: 600px;
+  overflow: scroll;
   color: $indigo;
   background-color: $dust;
   .answer-wrapper {
