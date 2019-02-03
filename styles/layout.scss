@@ -49,6 +49,14 @@ button:focus {
   outline: 0;
 }
 
+a {
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+    color: $teal;
+  }
+}
+
 .hidden {
   display: none;
 }
