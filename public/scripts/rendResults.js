@@ -36,7 +36,6 @@ let voterCount = 0;
             const element = createOptionElement(key);
             allQuestions.append(element);
           }
-          
         }
       $(".maker-question").text(currentTitle).appendTo(".maker-question");
       $(".voter-count").text("Total voters:").append(" ").append(voterCount).appendTo(".voter-count");
