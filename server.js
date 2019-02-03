@@ -111,9 +111,8 @@ app.get("/polls", (req, res) => {
 });
 
 // Redirects user to home on visiting /polls
-app.get("/polls/", (req, res) => {
+app.get("/polls/:id", (req, res) => {
   res.render("vote");
-  // res.redirect("/");
 });
 
 
