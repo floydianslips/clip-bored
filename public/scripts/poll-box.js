@@ -12,10 +12,10 @@ $(function() {
 
 
     const optionInputWrapper = $("<div>").addClass("option-input-wrapper");
-    const newInput = $("<input>").addClass( "option" ).attr( "placeholder", "And another..." ).attr( "name", `option${endNum}`);
+    const newInput = $("<input>").addClass( "option" ).attr( "placeholder", "And another response option..." ).attr( "name", `option${endNum}`);
     // const newPencil = $("<btn>").addClass("pencil-btn", "btn-sm").text("✏️");
     const fullInputWrapper = $(optionInputWrapper).append(newInput);
-    const descriptionField = $("<input>").addClass( "description-field" ).attr( "placeholder", "Description..." ).attr( "name", `option-description${endNum}`);
+    const descriptionField = $("<input>").addClass( "description-field" ).attr( "placeholder", "Optional d  escription..." ).attr( "name", `option-description${endNum}`);
 
 
     if (endNum >= 6) {

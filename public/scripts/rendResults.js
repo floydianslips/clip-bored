@@ -13,6 +13,7 @@ function createOptionElement (data) {
   }
 
 const url = window.location.href;
+const pollUrl = url.substring(0, url.lastIndexOf("/") + 1);
 const result = url.split( '/' );
 const partUrl = result[4];
 const allQuestions = $("#answer-box");
@@ -35,9 +36,11 @@ let voterCount = 0;
             const element = createOptionElement(key);
             allQuestions.append(element);
           }
-          $(".maker-question").text(currentTitle).appendTo(".maker-question");
-          $(".voter-count").text("Total voters:").append(" ").append(voterCount).appendTo(".voter-count");
+          
         }
+      $(".maker-question").text(currentTitle).appendTo(".maker-question");
+      $(".voter-count").text("Total voters:").append(" ").append(voterCount).appendTo(".voter-count");
+      $("#poll-link").attr('href', pollUrl).append(pollUrl);
     });
   }
 getOrderedOptions();
