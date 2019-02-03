@@ -104,7 +104,6 @@ app.get("/results", (req, res) => {
   res.render("results");
 });
 
-res.render("vote");
 
 //Redirects user to home on visiting /polls
 app.get("/polls", (req, res) => {
