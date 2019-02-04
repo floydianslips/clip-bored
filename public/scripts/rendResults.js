@@ -16,7 +16,7 @@ $(function() {
   var pollUrl = url.substring(0, url.lastIndexOf("/"));
   var result = url.split('/');
   var partUrl = result[4];
-  
+
   var allQuestions = $("#answer-box");
   var currentTitle = "";
   var rankNumber = 0;
@@ -44,4 +44,5 @@ $(function() {
     });
   }
   getOrderedOptions();
+
 });
