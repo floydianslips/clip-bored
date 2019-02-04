@@ -2,7 +2,7 @@
 
 Clipbored is a strawpoll esque poll creator, the first group project for the Lighthouse Labs web dev bootcamp. This is a full stack web app, using Node, ES6, Express, Knex and PostgreSQL in the back-end and bootstrap framework, SCSS, ES5, jQuery and AJAX front-end technologies.
 
-*made by:* **@ringringlemurpants, @floydianslips, @SammyLiretteCowen**
+*made by:* **[Ghabe Bossin](https://github.com/ringringlemurpants), [Joshua Dennis](https://github.com/floydianslips), [Sammy Lirette-Cowen](https://github.com/SammyLiretteCowen)**
 
 ## Features
 
