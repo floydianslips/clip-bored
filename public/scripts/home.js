@@ -1,11 +1,11 @@
-$(() => {
+$(function() {
 
   //Logic For Poll Submission
   $("#manifest-poll").on("click", function (event) {
     event.preventDefault();
-    let email = $(".email").val();
-    let question = $(".question").val();
-    let newPollPayload = {
+    var email = $(".email").val();
+    var question = $(".question").val();
+    var newPollPayload = {
       "newPoll": {
         "maker": email,
         "title": question

@@ -1,25 +1,26 @@
-$(() => {
+$(function() {
 
   // build poll results box
   function createOptionElement(data) {
-    let $optionSection = $("<div class='option-answer-wrapper'>");
-    let $optionRankText = $("<div id='header' class='rank' >").text("Ranked #");
-    let $optionRank = $("<div id='header' class='place'>").text(rankNumber);
-    let $optionPoints = $("<div id='header' class='b-points'>").text(data.points);
-    let $optionQuestion = $("<h3 class='answer'>").text(data.question);
-    let $optionDescription = $("<p class='answer-description' >").text(data.description);
-    let $fullOption = $optionSection.append($optionRankText).append("  ").append($optionRank).append("  ").append("with: ").append("  ").append($optionPoints).append(" ").append("points is:").append($optionQuestion).append($optionDescription);
+    var $optionSection = $("<div class='option-answer-wrapper'>");
+    var $optionRankText = $("<div id='header' class='rank' >").text("Ranked #");
+    var $optionRank = $("<div id='header' class='place'>").text(rankNumber);
+    var $optionPoints = $("<div id='header' class='b-points'>").text(data.points);
+    var $optionQuestion = $("<h3 class='answer'>").text(data.question);
+    var $optionDescription = $("<p class='answer-description' >").text(data.description);
+    var $fullOption = $optionSection.append($optionRankText).append("  ").append($optionRank).append("  ").append("with: ").append("  ").append($optionPoints).append(" ").append("points is:").append($optionQuestion).append($optionDescription);
     return $fullOption;
   }
 
-  const url = window.location.href;
-  const pollUrl = url.substring(0, url.lastIndexOf("/"));
-  const result = url.split('/');
-  const partUrl = result[4];
-  const allQuestions = $("#answer-box");
-  let currentTitle = "";
-  let rankNumber = 0;
-  let voterCount = 0;
+  var url = window.location.href;
+  var pollUrl = url.substring(0, url.lastIndexOf("/"));
+  var result = url.split('/');
+  var partUrl = result[4];
+  
+  var allQuestions = $("#answer-box");
+  var currentTitle = "";
+  var rankNumber = 0;
+  var voterCount = 0;
 
   // create and dynamically render results page
   function getOrderedOptions() {
@@ -28,12 +29,12 @@ $(() => {
       url: `/api/polls/${result}/results`
     }).done((options) => {
       allQuestions.empty();
-      for (let key of options) {
+      for (var key of options) {
         if (key.polls_id == partUrl) {
           rankNumber++;
           voterCount = key.voter_count;
           currentTitle = key.title;
-          const element = createOptionElement(key);
+          var element = createOptionElement(key);
           allQuestions.append(element);
         }
       }
