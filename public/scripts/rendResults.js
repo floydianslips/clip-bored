@@ -3,9 +3,9 @@ $(function() {
   // build poll results box
   function createOptionElement(data) {
     var $optionSection = $("<div class='option-answer-wrapper'>");
-    var $optionRankText = $("<div id='header' class='rank' >").text("Ranked #");
-    var $optionRank = $("<div id='header' class='place'>").text(rankNumber);
-    var $optionPoints = $("<div id='header' class='b-points'>").text(data.points);
+    var $optionRankText = $("<div class='rank header' >").text("Ranked #");
+    var $optionRank = $("<div class='place header'>").text(rankNumber);
+    var $optionPoints = $("<div class='b-points header'>").text(data.points);
     var $optionQuestion = $("<h3 class='answer'>").text(data.question);
     var $optionDescription = $("<p class='answer-description' >").text(data.description);
     var $fullOption = $optionSection.append($optionRankText).append("  ").append($optionRank).append("  ").append("with: ").append("  ").append($optionPoints).append(" ").append("points is:").append($optionQuestion).append($optionDescription);
