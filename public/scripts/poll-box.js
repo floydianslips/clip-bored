@@ -1,5 +1,9 @@
 $(function() {
 
+  $(".pencil-btn").on("click", function() {
+    event.preventDefault();
+  });
+
   $(".question-options").on("focus", ".option", function() {
 
     let endNum = Number((this).name.substr(-1)) +1;
@@ -10,7 +14,7 @@ $(function() {
     const fullInputWrapper = $(optionInputWrapper).append(newInput);
     const descriptionField = $("<input>").addClass( "description-field" ).attr( "placeholder", "Optional description..." ).attr( "name", `option-description${endNum}`);
 
-    if (endNum >= 5) {
+    if (endNum >= 6) {
       return;
     } else if ((this).name == optionName) {
       $(".question-options").append(fullInputWrapper, descriptionField);

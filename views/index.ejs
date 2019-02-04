@@ -17,10 +17,10 @@
   <!-- Animate CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/nav.css" />
-  <link rel="stylesheet" href="/styles/index.css" />
-  <link rel="stylesheet" href="/styles/poll-box.css" />
+  <link rel="stylesheet" href="/styles/layout.css"/>
+  <link rel="stylesheet" href="/styles/nav.css"/>
+  <link rel="stylesheet" href="/styles/index.css"/>
+  <link rel="stylesheet" href="/styles/poll-box.css"/>
   <link rel="stylesheet" href="/styles/info-row.css">
   <link rel="stylesheet" href="/styles/footer.css">
 
@@ -41,84 +41,84 @@
 
   <!-- BS4 container -->
   <main class="container-flex">
-    <!-- 1st row -->
-    <div class="row justify-content-center">
+      <!-- 1st row -->
+      <div class="row justify-content-center">
 
-      <div class="col col-md-6">
+        <div class="col col-md-6">
 
-        <section class="intro-blurb ">
-          <h1 class="welcome">Welcome to <span>Clipbored!?</span></h1>
-          <p class="blurb">
-            "What food do we want to get on friday? Sushi, pizza, or burgers?" <br>
-            This is the place to make quick polls. Enter a question and some options, then we will give you a link to
-            send to your friends. They get to vote, and you get sent the results of the poll.
-          </p>
-        </section>
+          <section class="intro-blurb ">
+            <h1 class="welcome">Welcome to <span>Clipbored!?</span></h1>
+            <p class="blurb">
+              "What food do we want to get on friday? Sushi, pizza, or burgers?" <br>
+              This is the place to make quick polls. Enter a question and some options, then we will give you a link to
+              send to your friends. They get to vote, and you get sent the results of the poll real-time.
+            </p>
+          </section>
 
-      </div>
+        </div>
 
-      <div class="col col-md-6 justify-content-end">
-        <form method="POST" autocomplete="off" class="create rounded shadow">
+        <div class="col col-md-6 justify-content-end">
+          <form method="POST" autocomplete="off" class="create rounded shadow">
 
-          <div class="question-wrapper rounded-top">
-            <input type="text" class="question" placeholder="Create your question... ">
-          </div>
-
-          <div class="question-options">
-            <div class="option-input-wrapper">
-              <input type="text" class="option" name="option0" placeholder="Add your first response option...">
+            <div class="question-wrapper rounded-top">
+              <input type="text" class="question" placeholder="Create your question... ">
             </div>
-            <input type="text" name="option-description0" class="description-field" placeholder="Optional description...">
 
-            <div class="option-input-wrapper">
-              <input type="text" class="option" name="option1" placeholder="Add your second response option...">
+            <div class="question-options">
+              <div class="option-input-wrapper">
+                <input type="text" class="option" name="option0" placeholder="Add your first response option...">
+              </div>
+              <input type="text" name="option-description0" class="description-field" placeholder="Optional description...">
+
+              <div class="option-input-wrapper">
+                <input type="text" class="option" name="option1" placeholder="Add your second response option...">
+              </div>
+              <input type="text" name="option-description1" class="description-field" placeholder="Optional description...">
+
             </div>
-            <input type="text" name="option-description1" class="description-field" placeholder="Optional description...">
 
-          </div>
+            <footer class="rounded-bottom">
+              <input type="email" class="email" placeholder="Enter your email...">
+              <input type="submit" id="manifest-poll" class="btn shadow-sm">
+            </footer>
 
-          <footer class="rounded-bottom">
-            <input type="email" class="email" placeholder="Enter your email...">
-            <input type="submit" id="manifest-poll" class="btn shadow-sm">
-          </footer>
+          </form>
 
-        </form>
-
+        </div>
       </div>
-    </div>
-    <!-- 2nd row -->
-    <div class="info-row row">
+      <!-- 2nd row -->
+      <div class="info-row row">
 
-      <div class="col">
-        <div class="card text-center shadow">
-          <div class="card-body">
-            <h5 class="card-title">Free and simple</h5>
-            <p class="card-text">Fill out the form, share your poll. You don't even need to sign in. Simple,
-              no-frills, easy to use, and always free.</p>
+        <div class="col">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Free and simple</h5>
+              <p class="card-text">Fill out the form, share your poll. You don't even need to sign in. Simple and no-frills, easy to use.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Consensus Based</h5>
+              <p class="card-text">We use the <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count method</a>
+                to provide a simple proportional representation voting system, so voters can rank their choices instead
+                of only choosing one.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Direct Results</h5>
+              <p class="card-text">Each time someone votes on your poll, you'll get an email with the updated results
+                page.</p>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="col">
-        <div class="card text-center shadow">
-          <div class="card-body">
-            <h5 class="card-title">Consensus Based</h5>
-            <p class="card-text">We use the <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count method</a>
-              to provide a proportional representation voting system, so voters rank their choices instead
-              of only choosing one.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card text-center shadow">
-          <div class="card-body">
-            <h5 class="card-title">Direct Results</h5>
-            <p class="card-text">Each time someone votes on your poll, you'll get an email right away with a link to the updated/current results page. Don't worry, we'll never spam you. </p>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- BS4 container-flex end -->
   </main>

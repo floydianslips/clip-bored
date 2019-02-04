@@ -65,19 +65,19 @@ a {
 
 @include media-breakpoint-down(xl) {
   .container-flex {
-    padding: 2em 6em;
+    padding: 6em;
   }
 }
 
 @include media-breakpoint-down(lg) {
   .container-flex {
-    padding: 2em 5em;
+    padding: 5em;
   }
 }
 
 @include media-breakpoint-down(md) {
   .container-flex {
-      padding: 2em 4em;
+      padding: 4em;
   }
 }
 
