@@ -3,6 +3,7 @@ const url = require('url');
 const express = require('express');
 const router  = express.Router();
 
+//grab data for polls page
 module.exports = (knex) => {
   router.get("/", (req, res) => {
        knex
