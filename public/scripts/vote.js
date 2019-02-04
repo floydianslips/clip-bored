@@ -58,24 +58,44 @@ $('#submit-votes').on('click', function(event) {
 		votePayload['newVotes']['vote' + index] = {
 			'id': $(this).attr('id'),
 			'points': currentCardInPoll - $(this).val() - 1,
-			'rank': $(this).val(),
+			'rank': Number($(this).val()),
 		};
 	})
-	console.log(votePayload);
+	// console.log(votePayload['newVotes']['vote0']['rank']);
 	//Validate Payload Doesn't Have Matching Ranks
+	// for (let key in votePayload['newVotes']) {
+	// 	console.log('this is the rank of ' + key + ' ' + votePayload['newVotes'][key]['rank']);
+	// 	console.log('ran');
+	// 	console.log(votePayload['newVotes'][key]['rank']);
+	// 	for (let i =0; )
+	// 	if (votePayload['newVotes'][key]['rank'] === votePayload['newVotes']['vote' + i]['rank']) {
+	// 		alert('Two Options Have The Same Rank!');
+	// 		break;
+	// 	}
+	// }
+
+	let filteringValues = [];
+	for (let key in votePayload['newVotes']){
+		filteringValues.push(votePayload['newVotes'][key]['rank']);
+	}
+	while (filteringValues.length > 0) {
+		num = filteringValues.pop();
+		if (filteringValues.includes(num)) {
+			alert('You have ranked two things as the same!');
+			return;
+		}
+	}
+console.log(votePayload);
 
 
-
-
-
-// 	$.ajax({
-// 		url: '/polls/' + result,
-// 		type: "PUT",
-// 		data: votePayload,
-// 		 success: function(response){
-// 			location.href = response;
-// 		 }
-//  });
+	$.ajax({
+		url: '/polls/' + result,
+		type: "PUT",
+		data: votePayload,
+		 success: function(response){
+			location.href = response;
+		 }
+ });
 })
 
 

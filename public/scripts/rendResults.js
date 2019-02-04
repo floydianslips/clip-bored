@@ -38,7 +38,7 @@ let voterCount = 0;
           }
         }
       $(".maker-question").text(currentTitle).appendTo(".maker-question");
-      $(".voter-count").text("Total voters:").append(" ").append(voterCount).appendTo(".voter-count");
+      // $(".voter-count").text("Total voters:").append(" ").append(voterCount).appendTo(".voter-count");
       $("#poll-link").attr('href', pollUrl).append(pollUrl);
     });
   }
