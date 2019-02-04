@@ -1,11 +1,11 @@
 // accept email and links from user input and send email to maker;
-var emailConfig = require('../../email-config')();
-var express = require("express");
-var mailgun = require('mailgun-js')(emailConfig);
-var emailRoutes = express.Router();
+let emailConfig = require('../email-config')();
+let express = require("express");
+let mailgun = require('mailgun-js')(emailConfig);
+let emailRoutes = express.Router();
 
 module.exports = function sendEmail(email, adminLink, pollLink, emailSubject, emailBody) {
-  var data = {
+  let data = {
     from: 'Third Blind Mouse <postmaster@sandbox182d45d576b24145a3d4d1d7fd4d0d76.mailgun.org>',
     to: `<${email}>`,
     subject: `Congratulations, ${emailSubject}!`,
