@@ -49,25 +49,33 @@ button:focus {
   outline: 0;
 }
 
+a {
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+    color: $teal;
+  }
+}
+
 .hidden {
   display: none;
 }
 
 @include media-breakpoint-down(xl) {
   .container-flex {
-    margin: 6em;
+    padding: 6em;
   }
 }
 
 @include media-breakpoint-down(lg) {
   .container-flex {
-    margin: 5em;
+    padding: 5em;
   }
 }
 
 @include media-breakpoint-down(md) {
   .container-flex {
-      margin: 4em;
+      padding: 4em;
   }
 }
 
@@ -75,7 +83,7 @@ button:focus {
   html {
     font-size: 1.2;
     .container-flex {
-      margin: 1rem;
+      padding: 1em;
       .welcome {
         font-size: 2em;
       }
@@ -85,7 +93,7 @@ button:focus {
 
 @include media-breakpoint-down(xs) {
   .container-flex {
-    margin: .5rem;
+    padding: .5rem;
   }
 }
 

@@ -15,7 +15,7 @@ $(function() {
     const newInput = $("<input>").addClass( "option" ).attr( "placeholder", "And another response option..." ).attr( "name", `option${endNum}`);
     // const newPencil = $("<btn>").addClass("pencil-btn", "btn-sm").text("✏️");
     const fullInputWrapper = $(optionInputWrapper).append(newInput);
-    const descriptionField = $("<input>").addClass( "description-field" ).attr( "placeholder", "Optional d  escription..." ).attr( "name", `option-description${endNum}`);
+    const descriptionField = $("<input>").addClass( "description-field" ).attr( "placeholder", "Optional description..." ).attr( "name", `option-description${endNum}`);
 
 
     if (endNum >= 6) {
@@ -23,11 +23,6 @@ $(function() {
     } else if ((this).name == optionName) {
       $(".question-options").append(fullInputWrapper, descriptionField);
     }
-  });
-
-  $(".submit-btn").on("click", function() {
-    event.preventDefault();
-    //check to see that at least two question fields and email is filled out, then if yes, POST form content.
   });
 
 });

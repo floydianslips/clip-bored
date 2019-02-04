@@ -1,0 +1,10 @@
+@import "layout.scss";
+
+footer.bottom {
+  background-color:darken($indigo, 10%);
+  p {
+    margin: 0;
+    text-align: right;
+    color: lighten($indigo, 10%);
+  }
+}

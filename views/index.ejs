@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
- <head>
+<head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,9 +18,12 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
   <link rel="stylesheet" href="/styles/poll-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/info-row.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+
 
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -35,12 +38,13 @@
 <body>
 
   <nav class="navbar navbar-custom shadow-sm">
-    <a href="index.ejs" class="navbar-brand">Clipbored!?</a>
+    <a href="http://localhost:8080" class="navbar-brand">Clipbored!?</a>
   </nav>
 
   <!-- BS4 container -->
-  <main class="container-flex">
-    <!-- main row start -->
+  <div class="container-flex shadow-sm">
+    <main>
+      <!-- 1st row -->
       <div class="row justify-content-center">
 
         <div class="col col-md-6">
@@ -48,8 +52,9 @@
           <section class="intro-blurb ">
             <h1 class="welcome">Welcome to <span>Clipbored!?</span></h1>
             <p class="blurb">
-            What food do we want to get on friday? Sushi, pizza, or burgers? <br>
-            This is the place to make quick polls. Enter a question and some options, then we will give you a link to send to your friends. They get to vote by the borda method, and you get an email with the results of the poll. It's dead simple!
+              "What food do we want to get on friday? Sushi, pizza, or burgers?" <br>
+              This is the place to make quick polls. Enter a question and some options, then we will give you a link to
+              send to your friends. They get to vote, and you get sent the results of the poll real-time.
             </p>
           </section>
 
@@ -66,12 +71,12 @@
               <div class="option-input-wrapper">
                 <input type="text" class="option" name="option0" placeholder="Add your first response option...">
               </div>
-              <input type="text" name="option-description0" class="description-field" placeholder="Optional Description...">
+              <input type="text" name="option-description0" class="description-field" placeholder="Optional description...">
 
               <div class="option-input-wrapper">
-                <input type="text" class="option" name="option1"  placeholder="Add your second response option...">
+                <input type="text" class="option" name="option1" placeholder="Add your second response option...">
               </div>
-              <input type="text" name="option-description1" class="description-field" placeholder="Optional Description...">
+              <input type="text" name="option-description1" class="description-field" placeholder="Optional description...">
 
             </div>
 
@@ -81,13 +86,50 @@
             </footer>
 
           </form>
+
+        </div>
+      </div>
+      <!-- 2nd row -->
+      <div class="info-row row">
+
+        <div class="col">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Free and simple</h5>
+              <p class="card-text">Fill out the form, share your poll. You don't even need to sign in. Simple and no-frills, easy to use.</p>
+            </div>
+          </div>
         </div>
 
+        <div class="col">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Consensus Based</h5>
+              <p class="card-text">We use the <a href="https://en.wikipedia.org/wiki/Borda_count">Borda count method</a>
+                to provide a simple proportional representation voting system, so voters can rank their choices instead
+                of only choosing one.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Direct Results</h5>
+              <p class="card-text">Each time someone votes on your poll, you'll get an email with the updated results
+                page.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
+    </main>
 
     <!-- BS4 container-flex end -->
-  </main>
+  </div>
+  <footer class="bottom">
+    <p>&#xa9 Three Blind Mice ltd site</p>
+  </footer>
 </body>
 
 </html>
