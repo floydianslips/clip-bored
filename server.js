@@ -13,19 +13,17 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+
 // Seperated Routes for each Resource
 const pollsRoutes = require("./routes/polls");
 const resultsRoutes = require("./routes/results");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-
-
+//  The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
-
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -37,13 +35,13 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-
-
 // Mount all resource routes
 app.use(knexLogger(knex));
+
 // app.get("/api/polls/:id, (req, res) => {pollsRoutes(knex)};");
 app.use("/api/polls/:id", pollsRoutes(knex));
 app.use("/api/polls/:id/results", resultsRoutes(knex));
+
 //POST or PUT listeners
 app.post("/polls", (req, res) => {
   let newPollId = generateRandomNumbers(6);
@@ -88,22 +86,10 @@ app.put("/polls/:id", (req, res) => {
   });
 });
 
-
-
 // GET listeners
-
-//Renders index page on home root visit
-
-
-//why don't these work like the one above ?? ^^^
-app.get("/vote", (req, res) => {
-  res.render("vote");
-});
-
 app.get("/results", (req, res) => {
   res.render("results");
 });
-
 
 //Redirects user to home on visiting /polls
 app.get("/polls", (req, res) => {
@@ -115,8 +101,6 @@ app.get("/polls/:id", (req, res) => {
   res.render("vote");
 });
 
-
-
 //Loads the results page for the current poll
 app.get("/polls/:id/results/", (req, res) => {
   res.render("results");
@@ -125,7 +109,6 @@ app.get("/polls/:id/results/", (req, res) => {
 app.get("/", (req, res) => {
   res.render("index");
 });
-
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
