@@ -1,0 +1,8 @@
+// this is a configuration file for mailgun api. Save it as email-config.js and make sure it is listed in the .gitignore file.
+module.exports = () => {
+  const emailConfig = {
+    apiKey: 'your_mailgun_api_key',
+    domain: 'your_domain'
+  };
+return emailConfig;
+};

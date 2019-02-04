@@ -22,7 +22,7 @@ Clipbored is a strawpoll esque poll creator, the first group project for the Lig
 1. Fork this repository, then clone your fork of this repository.
 2. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
 3. Update the .env file with your correct local information
-4. Create the `.email-config.js` by using `.email-config.example.js` the same as above.
+4. Create the `.email-config.js` by using `.email-config.example` the same as above.
 5. Install dependencies: `npm install`
 6. Fix to binaries for sass: `npm rebuild node-sass`
 7. Run migrations: `npm run knex migrate:latest`
