@@ -5,6 +5,7 @@
   max-width: 500px;
   max-height: 600px;
   overflow: scroll;
+  overflow-wrap: break-word;
   color: $indigo;
   background-color: $dust;
   .answer-wrapper {

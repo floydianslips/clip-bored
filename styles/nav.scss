@@ -5,14 +5,11 @@
 
 @import "layout.scss";
 
-.navbar {
-  margin-bottom: 2em;
-  .navbar-brand {
-    color: lighten($teal, 5%);;
-    font-weight: 500;
-  }
+.navbar-brand {
+  color: lighten($teal, 5%);;
+  font-weight: 500;
 }
 
-.navbar-custom{
+.navbar-custom {
   background-color: lighten($indigo, 5%);
 }

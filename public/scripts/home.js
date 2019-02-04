@@ -8,7 +8,7 @@ $(() => {
   	let newPollPayload = {
   				"newPoll": {
       			"maker": email,
-       			"title": question
+       		  "title": question
         	},
        		"options": {
         	}
@@ -24,7 +24,7 @@ $(() => {
     	return;
   	}
  	  if (!$(".email").val()) {
- 	  	alert('You Forgot Your E-mail!');
+			alert('You Forgot Your E-mail!');
  	  	return;
  	 	}
 
