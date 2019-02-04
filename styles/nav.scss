@@ -1,12 +1,8 @@
-// Required
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
 
 @import "layout.scss";
 
 .navbar-brand {
-  color: lighten($teal, 5%);;
+  color: lighten($teal, 5%);
   font-weight: 500;
 }
 

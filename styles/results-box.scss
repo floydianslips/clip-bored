@@ -3,29 +3,36 @@
 .results-box {
   margin: 1em auto;
   max-width: 500px;
-  max-height: 600px;
+  max-height: 900px;
   overflow: scroll;
   overflow-wrap: break-word;
   color: $indigo;
   background-color: $dust;
+
   .answer-wrapper {
     background-color: $teal;
     padding: 1em;
   }
+
   .question-options-answers {
     padding: 1em;
+
     .option-answer-wrapper {
       padding-top: 1em;
-      border-bottom: 1px dotted lighten($indigo, 30%);
+      border-bottom: 1px dotted $teal;
+
       .rank {
         border-bottom: 1px dashed $teal;
+        margin-bottom: 1em;
       }
+
       .answer {
         font-size: 1.3em;
         color: $indigo;
         width: 100%;
       }
     }
+
     .answer-description {
       color: $indigo;
       margin: .5em 0;

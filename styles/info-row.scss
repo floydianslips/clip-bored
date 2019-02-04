@@ -11,10 +11,10 @@
       color: $indigo;
       background-color: $dust;
       border: none;
-      .card-text {
-        border-bottom: 1px dotted $teal;
-        border-radius: 5px;
+      .card-title {
+        padding-bottom: .5em;
+        border-bottom: 1px solid $teal;
       }
-  }
+    }
   }
 }
