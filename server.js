@@ -84,7 +84,7 @@ app.put("/polls/:id", (req, res) => {
   knex('makers').where('polls_id', req.params.id).then((results) =>  {
     email = results[0]['email'];
     sendEmail(email, pollResults, pollUrl, `someone voted on poll ${req.params.id}`, 'Someone voted on your poll! Check it out!');
-    res.redirect("/polls/" + req.params.id + "/results");
+    res.send("/polls/" + req.params.id + "/results");
   });
 });
 

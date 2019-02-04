@@ -38,8 +38,6 @@ function loadAllVoteCards() {
 		});
 	})
 };
-//Initates All God
-loadAllVoteCards();
 
 $('#submit-votes').on('click', function(event) {
 	event.preventDefault();
@@ -62,33 +60,26 @@ $('#submit-votes').on('click', function(event) {
 			'points': currentCardInPoll - $(this).val() - 1,
 			'rank': $(this).val(),
 		};
-	
-	// Check To Make Sure No Two Votes Have The Same Value
-	// for (key in votePayload['newVotes']) {
-	// 	let i = 0;
-	// 	if (key['rank'] === votePayload['newVotes']['vote' + i]['rank']) {
-	// 			alert('You have ranked two options the same! Try again!');
-	// 			i++;
-	// 			break;			
-	// 	}
-	// 	console.log(key);
-	// }
-
-	// $('select').each(function(index) {
-	// 	for (let i = 1; i < this.length; i++) {
-	// 		if ($(this).val() === votePayload['newVotes']['vote' + i]['rank']) {
-	// 			alert('You have ranked two options the same! Try again!');
-	// 			break;
-	// 		}
-	// 	}
-	// })
-	// Send Off Vote Payload To Express
-	// On Success Redirect User To Result Page
 	})
 	console.log(votePayload);
+	//Validate Payload Doesn't Have Matching Ranks
+
+
+
+
+
+// 	$.ajax({
+// 		url: '/polls/' + result,
+// 		type: "PUT",
+// 		data: votePayload,
+// 		 success: function(response){
+// 			location.href = response;
+// 		 }
+//  });
 })
 
 
 
-
+//Initates Loading Of VoteCards
+loadAllVoteCards();
 });
