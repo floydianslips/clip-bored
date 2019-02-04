@@ -1,6 +1,3 @@
-// Custom.scss
-// Option B: Include parts of Bootstrap
-
 // Required
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
@@ -14,15 +11,17 @@
 @import "../node_modules/bootstrap/scss/grid";
 
 // Palette
-$dust  : #f5f1ed;
+$dust : #f5f1ed;
 $indigo: #5756a7;
-$teal  : #20c997;
+$teal : #20c997;
 
+html,
 body {
+  height: 100%;
   margin: 0;
-  padding: 0;
   color: $dust;
   background-color: $indigo;
+
   font: {
     family: 'Montserrat', sans-serif;
     size: 1em;
@@ -31,7 +30,9 @@ body {
 }
 
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 500;
 }
 
@@ -44,7 +45,7 @@ input {
 }
 
 :focus {
-  outline:none;
+  outline: none;
 }
 
 button:focus {
@@ -53,39 +54,46 @@ button:focus {
 
 a {
   color: inherit;
+
   &:hover {
     text-decoration: none;
     color: $teal;
   }
 }
 
-.hidden {
-  display: none;
+// .hidden {
+//   display: none;
+// }
+main {
+  min-height: calc(100vh - 5.5em);
 }
+
 
 @include media-breakpoint-down(xl) {
   .container-flex {
-    padding: 6em;
+    padding: 2em 6em;
   }
 }
 
 @include media-breakpoint-down(lg) {
   .container-flex {
-    padding: 5em;
+    padding: 2em 5em;
   }
 }
 
 @include media-breakpoint-down(md) {
   .container-flex {
-      padding: 4em;
+    padding: 2em 4em;
   }
 }
 
 @include media-breakpoint-down(sm) {
   html {
     font-size: .9em;
+
     .container-flex {
       padding: 1em;
+
       .welcome {
         font-size: 2em;
       }
@@ -98,4 +106,3 @@ a {
     padding: .5rem;
   }
 }
-

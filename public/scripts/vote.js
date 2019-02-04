@@ -19,7 +19,7 @@ $(() => {
 	    method: "GET",
 	    url: `/api/polls/${result}`
 	  }).done((options) => {
-	    for(key of options) {
+	    for(let key of options) {
 				if (key.polls_id == result) {
 					currentTitle = key.title;
 					const newVoteCard = buildVoteCard(key);

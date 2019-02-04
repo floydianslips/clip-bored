@@ -4,17 +4,20 @@
   padding-top: 2em;
   border-top: 1px dashed $teal;
   margin-top: 1.5em;
-  .col  {
+
+  .col {
     margin: .5em 0;
+
     .card {
       height: 100%;
       color: $indigo;
       background-color: $dust;
       border: none;
-      .card-text {
-        border-bottom: 1px dotted $teal;
-        border-radius: 5px;
+
+      .card-title {
+        padding-bottom: .5em;
+        border-bottom: 1px solid $teal;
       }
-  }
+    }
   }
 }
