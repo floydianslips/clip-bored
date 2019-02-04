@@ -81,7 +81,7 @@ a {
 
 @include media-breakpoint-down(sm) {
   html {
-    font-size: 1.2;
+    font-size: .9em;
     .container-flex {
       padding: 1em;
       .welcome {
