@@ -1,29 +1,48 @@
-# Node Skeleton
+# Clipbored!? © Three Blind Mice Ltd site
 
-## Project Setup
+Clipbored is a strawpoll esque poll creator, the first group project for the Lighthouse Labs web dev bootcamp. This is a full stack web app, using Node, ES6, Express, Knex and MongoDB in the back-end and bootstrap framework, SCSS, ES5, jQuery and AJAX front-end technologies.
 
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+*made by:* **@ringringlemurpants, @floydianslips, @SammyLiretteCowen**
 
-## Getting Started
+## Features
 
-1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information
-3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Run migrations: `npm run knex migrate:latest`
-  - Check the migrations folder to see what gets created in the DB
-6. Run the seed: `npm run knex seed:run`
-  - Check the seeds file to see what gets seeded in the DB
-7. Run the server: `npm run local`
-8. Visit `http://localhost:8080/`
+- Auto expanding poll creation form
+- Submission validation
+- regularly updated results by email
 
-## Dependencies
+## Examples
 
-- Node 5.10.x or above
-- NPM 3.8.x or above
+![Home](readme_screens/home.png)
+![Home-filled](readme_screens/home-filled.png)
+![Vote](readme_screens/vote.png)
+![Results](readme_screens/results.png)
+
+#### Getting Started
+
+1. Fork this repository, then clone your fork of this repository.
+2. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
+3. Update the .env file with your correct local information
+4. Create the `.email-config.js` by using `.email-config.example.js` the same as above.
+5. Install dependencies: `npm install`
+6. Fix to binaries for sass: `npm rebuild node-sass`
+7. Run migrations: `npm run knex migrate:latest`
+  <!-- - Check the migrations folder to see what gets created in the DB -->
+8. Run the seed: `npm run knex seed:run`
+  <!-- - Check the seeds file to see what gets seeded in the DB -->
+9. Run the server: `npm run local`
+10. Visit `http://localhost:8080/` in your browser.
+
+##### Dependencies
+
+- Body-parser
+- Bootstrap
+- Dotenv
+- Ejs
+- Express
+- Knex
+- Knex-logger
+- Mailgun-js
+- Morgan
+- Node
+- Node-sass-middleware
+- Pg
