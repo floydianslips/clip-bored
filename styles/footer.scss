@@ -1,16 +1,10 @@
 @import "layout.scss";
 
-// footer .navbar .navbar-custom {
-//   // padding: .5rem 1rem;
-//   background-color:darken($indigo, 10%);
-//   p {
-//     margin: 0;
-//     // text-align: right;
-//     color: lighten($indigo, 10%);
-//   }
-// }
-
 footer.navbar-custom {
-  color: lighten($indigo, 10%);
-  background-color:darken($indigo, 10%);
+  color: lighten($indigo, 20%);
+  background-color: $indigo;
+
+  span {
+    font-size: smaller;
+  }
 }

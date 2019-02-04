@@ -27,8 +27,20 @@
       color: $indigo;
       margin: .5em 0;
     }
-    .vote-form {
-      margin: .5em 0 0;
+    // .vote-form {
+    //   margin: .5em 0 0;
+    // }
+  }
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    button.btn {
+      color: $dust;
+      background-color: $teal;
+      &:hover {
+        background-color: darken($teal, 10%)
+      }
     }
   }
 }
