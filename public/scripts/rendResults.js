@@ -13,7 +13,7 @@ function createOptionElement (data) {
   }
 
 const url = window.location.href;
-const pollUrl = url.substring(0, url.lastIndexOf("/") + 1);
+const pollUrl = url.substring(0, url.lastIndexOf("/"));
 const result = url.split( '/' );
 const partUrl = result[4];
 const allQuestions = $("#answer-box");
